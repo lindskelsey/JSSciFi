@@ -1,0 +1,22 @@
+.tile1 {
+  height:100px;
+  width:100px;
+  position:relative;
+  float:left;
+  background-image: url("../images/tile1.png");
+}
+
+.tile2 {
+  height:100px;
+  width:100px;
+  position:relative;
+  float:left;
+  background-image: url("../images/tile2.png");
+}
+
+#container {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  outline: 1px solid black;
+}
