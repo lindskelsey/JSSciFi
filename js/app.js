@@ -1,7 +1,6 @@
 //******************************************************//
 //***************Build Randomly Generated Map***********//
 //******************************************************//
-
 var tilesetTotal = 3;
 var tilesTotal = 2;
 var tilesetNumber = randomNumber(1, tilesetTotal);
@@ -15,14 +14,14 @@ function randomNumber(min, max) {
 //***********Function to Randomize Array*******//
 
 function createRandomArray(width, height) {
-  var result = [];
-  for (var i = 0; i < width; i++) {
-    result[i] = [];
-    for (var j = 0; j < height; j++) {
-      result[i][j] = Math.floor(Math.random() * 2) + 1;
+    var result = [];
+    for (var i = 0; i < width; i++) {
+        result[i] = [];
+        for (var j = 0; j < height; j++) {
+            result[i][j] = Math.floor(Math.random() * 2) + 1;
+        }
     }
-  }
-  return result;
+    return result;
 }
 
 //*********Function to Randomize Array with Images*******//
@@ -31,28 +30,28 @@ var generatedArray = createRandomArray(5, 5)
 
 //**************Function to dynamically create CSS classes*****//
 
-function createClass(name,properties){
+function createClass(name, properties) {
     var style = document.createElement('style');
     style.type = 'text/css';
     document.getElementsByTagName('head')[0].appendChild(style);
-    if(!(style.sheet||{}).insertRule)
+    if (!(style.sheet || {}).insertRule)
         (style.styleSheet || style.sheet).addRule(name, rules);
     else
-        style.sheet.insertRule(name+"{"+properties+"}",0);
+        style.sheet.insertRule(name + "{" + properties + "}", 0);
 }
 
 
 //****************Function************//
 
 function createTileClasses() {
-  for (i = 1; i <= tilesTotal; i++) {
-    var divClass = (".tile" + i);
-    var newProperty = ("background-image: url(\"images/tiles/" + tilesetNumber + "/tile" + i + ".png\");")
-    createClass(divClass, newProperty);
-    console.log(i);
-    console.log(divClass);
-    console.log(newProperty);
-  }
+    for (i = 1; i <= tilesTotal; i++) {
+        var divClass = (".tile" + i);
+        var newProperty = ("background-image: url(\"images/tiles/" + tilesetNumber + "/tile" + i + ".png\");")
+        createClass(divClass, newProperty);
+        console.log(i);
+        console.log(divClass);
+        console.log(newProperty);
+    }
 }
 
 
