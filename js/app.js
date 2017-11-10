@@ -24,7 +24,7 @@ function createRandomArray(width, height) {
     return result;
 }
 
-//*********Function to Randomize Array with Images*******//
+//*********Variable for map size*******//
 
 var generatedArray = createRandomArray(5, 5)
 
@@ -35,7 +35,7 @@ function createClass(name, properties) {
     style.type = 'text/css';
     document.getElementsByTagName('head')[0].appendChild(style);
     if (!(style.sheet || {}).insertRule)
-        (style.styleSheet || style.sheet).addRule(name, rules);
+        (style.styleSheet || style.sheet).addRule(name, properties);
     else
         style.sheet.insertRule(name + "{" + properties + "}", 0);
 }
