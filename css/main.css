@@ -1,18 +1,14 @@
-.tile1 {
+
+
+
+
+.tile {
   height:100px;
   width:100px;
   position:relative;
   float:left;
-  background-image: url("../images/tile1.png");
 }
 
-.tile2 {
-  height:100px;
-  width:100px;
-  position:relative;
-  float:left;
-  background-image: url("../images/tile2.png");
-}
 
 #container {
   width: 500px;
