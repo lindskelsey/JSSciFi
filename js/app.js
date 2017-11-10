@@ -55,9 +55,12 @@ function createTileClasses() {
 }
 
 
-//******************Draw Map************//
+//******************Draw Map & Char Start Point************//
 
 function drawMap() {
+
+
+
     var container = document.getElementById("container");
     for (var i = 0; i < generatedArray.length; i++) {
         for (var j = 0; j < generatedArray[i].length; j++) {
@@ -82,4 +85,39 @@ window.onload = function() {
 }
 
 
-//*****//
+//******************************************************//
+//***************Move Character************************//
+//******************************************************//
+
+//**Key Codes W 87 A 65 S 83 D 68******//
+
+var hero = document.getElementById('hero');
+var heroLeft = 0;
+var heroTop = 0;
+
+function moveChar(e) {
+
+  if(e.keyCode==68) {
+    heroLeft +=2;
+    hero.style.left = heroLeft + 'px';
+    console.log("keystroked");
+  }
+  if(e.keyCode==65) {
+    heroLeft -=2;
+    hero.style.left = heroLeft + 'px';
+    console.log("keystrokea");
+ }
+ if(e.keyCode==83) {
+   heroTop +=2;
+   hero.style.top = heroTop + 'px';
+   console.log("keystrokes");
+ }
+ if(e.keyCode==87) {
+   heroTop -=2;
+   hero.style.top = heroTop + 'px';
+   console.log("keystrokew");
+ }
+}
+
+
+document.onkeydown = moveChar;

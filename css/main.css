@@ -12,3 +12,14 @@
   position: relative;
   outline: 1px solid black;
 }
+
+#hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 50px;
+  width: 50px;
+  outline: 1px solid black;
+  background-color: red;
+}
