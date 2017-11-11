@@ -82,6 +82,7 @@ function drawMap() {
 window.onload = function() {
     createTileClasses();
     drawMap();
+    startChar();
 }
 
 
@@ -95,29 +96,45 @@ var hero = document.getElementById('hero');
 var heroLeft = 0;
 var heroTop = 0;
 
+
+
 function moveChar(e) {
 
   if(e.keyCode==68) {
-    heroLeft +=2;
-    hero.style.left = heroLeft + 'px';
+    document.getElementById("hero").className = "box-mover";
+    hero.left = 100;
+    hero.top = 0;
     console.log("keystroked");
-  }
+}
   if(e.keyCode==65) {
-    heroLeft -=2;
+    heroLeft -=5;
     hero.style.left = heroLeft + 'px';
     console.log("keystrokea");
  }
  if(e.keyCode==83) {
-   heroTop +=2;
+   heroTop +=5;
    hero.style.top = heroTop + 'px';
    console.log("keystrokes");
  }
  if(e.keyCode==87) {
-   heroTop -=2;
+   heroTop -=5;
    hero.style.top = heroTop + 'px';
    console.log("keystrokew");
  }
 }
 
+function keyUp(e) {
+  if(e.keyCode==68) {
+    document.getElementById("hero").className =
+    document.getElementById("hero").className
+    .replace(new RegExp('(?:^|\\s)'+ 'box-mover' + '(?:\\s|$)'), ' ');
+    console.log("keystroked");
+  }
+}
+
+function startChar() {
+  document.getElementById("hero").className = "start";
+}
 
 document.onkeydown = moveChar;
+document.onkeyup = keyUp;

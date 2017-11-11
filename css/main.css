@@ -14,10 +14,41 @@
 }
 
 #hero {
-  position: absolute;
-  top: 0;
-  left: 0;
   z-index: 10;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
+  padding: 20px;
+  top: 0;
+  position: absolute;
 }
+
+.start {
+  left: 0;
+}
+
+
+
+@-webkit-keyframes mover {
+    0% { -webkit-transform: translateX(0); }
+    100% { -webkit-transform: translateX(100px); }
+}
+@-moz-keyframes mover {
+    0% { -moz-transform: translateX(0); }
+    100% { -moz-transform: translateX(100px); }
+}
+@-o-keyframes mover {
+    0% { -o-transform: translateX(0); }
+    100% { -o-transform: translateX(100px); }
+}
+@keyframes mover {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100px); }
+}
+
+
+.box-mover {
+      -webkit-animation: mover .5s ease-in-out forwards;
+      -moz-animation: mover .5s ease-in-out forwards;
+      -o-animation: mover .5s ease-in-out forwards;
+      animation: mover .5s ease-in-out forwards;
+  }
