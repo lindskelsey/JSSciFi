@@ -97,15 +97,18 @@ var heroLeft = 0;
 var heroTop = 0;
 
 
-
 function moveChar(e) {
+
+//*********NEW MOVEMENT- trying to use smooth animation******//
 
   if(e.keyCode==68) {
     document.getElementById("hero").className = "box-mover";
-    hero.left = 100;
-    hero.top = 0;
     console.log("keystroked");
+
 }
+
+//******OLD MOVEMENT- this moves 5px at a time**//
+
   if(e.keyCode==65) {
     heroLeft -=5;
     hero.style.left = heroLeft + 'px';
@@ -123,6 +126,8 @@ function moveChar(e) {
  }
 }
 
+//***********REMOVE CLASS NAME ON KEYUP**********//
+
 function keyUp(e) {
   if(e.keyCode==68) {
     document.getElementById("hero").className =
@@ -132,9 +137,53 @@ function keyUp(e) {
   }
 }
 
+//***********START CHAR AT TOP=0 LEFT=0************//
+
 function startChar() {
   document.getElementById("hero").className = "start";
 }
 
-document.onkeydown = moveChar;
-document.onkeyup = keyUp;
+document.onkeydown = moveCharNew;
+
+
+/////*******More Animations***********///
+
+left=0;
+top=0;
+
+function moveCharNew(e) {
+  //****D/RIGHT**//
+  if(e.keyCode==68) {
+    timer = setInterval(function() {
+        hero.style.left = (left += 10) + "px";
+        if (left == 100 || left == 200 || left == 300 || left == 400) {
+            clearInterval(timer);
+    }
+  }, 16);
+  //****A/Left**//
+} if(e.keyCode==65) {
+  timer = setInterval(function() {
+      hero.style.left = (left -= 10) + "px";
+      if (left== 0 || left == 100 || left == 200 || left == 300) {
+          clearInterval(timer);
+  }
+}, 16);
+//****W/UP**//
+} if(e.keyCode==87) {
+  timer = setInterval(function() {
+      hero.style.top = (top -= 10) + "px";
+      if (top== 0 || top == 100 || top == 200 || top == 300) {
+          clearInterval(timer);
+  }
+}, 16);
+//****S/DOWN**//
+} if(e.keyCode==83) {
+  timer = setInterval(function() {
+      hero.style.top = (top += 10) + "px";
+      if (top == 100 || top == 200 || top == 300 || top == 400) {
+          clearInterval(timer);
+  }
+}, 16);
+
+}
+}

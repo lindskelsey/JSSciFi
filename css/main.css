@@ -18,15 +18,16 @@
   height: 60px;
   width: 60px;
   padding: 20px;
-  top: 0;
   position: absolute;
 }
 
 .start {
   left: 0;
+  top: 0;
 }
 
 
+//********Animation to translate to the right********//
 
 @-webkit-keyframes mover {
     0% { -webkit-transform: translateX(0); }
