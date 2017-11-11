@@ -94,48 +94,6 @@ window.onload = function() {
 
 var hero = document.getElementById('hero');
 
-
-
-function moveChar(e) {
-
-//*********NEW MOVEMENT- trying to use smooth animation******//
-
-  if(e.keyCode==68) {
-    document.getElementById("hero").className = "box-mover";
-    console.log("keystroked");
-
-}
-
-//******OLD MOVEMENT- this moves 5px at a time**//
-
-  if(e.keyCode==65) {
-    heroLeft -=5;
-    hero.style.left = heroLeft + 'px';
-    console.log("keystrokea");
- }
- if(e.keyCode==83) {
-   heroTop +=5;
-   hero.style.top = heroTop + 'px';
-   console.log("keystrokes");
- }
- if(e.keyCode==87) {
-   heroTop -=5;
-   hero.style.top = heroTop + 'px';
-   console.log("keystrokew");
- }
-}
-
-//***********REMOVE CLASS NAME ON KEYUP**********//
-
-function keyUp(e) {
-  if(e.keyCode==68) {
-    document.getElementById("hero").className =
-    document.getElementById("hero").className
-    .replace(new RegExp('(?:^|\\s)'+ 'box-mover' + '(?:\\s|$)'), ' ');
-    console.log("keystroked");
-  }
-}
-
 //***********START CHAR AT TOP=0 LEFT=0************//
 
 function startChar() {
@@ -149,30 +107,29 @@ window.addEventListener('keydown', throttle(moveCharNew,200));
 
 /////*******More Animations***********///
 
-var left = 0;
+var heroLeft = 0;
 var heroTop = 0;
 
 function moveCharNew(e) {
-console.log(heroTop);
   //****D/RIGHT**//
   if(e.keyCode==68) {
     timer = setInterval(function() {
-        hero.style.left = (left += 10) + "px";
-        if (left == 100 || left == 200 || left == 300 || left == 400) {
+        hero.style.left = (heroLeft += 10) + "px";
+        if (heroLeft == 100 || heroLeft == 200 || heroLeft == 300 || heroLeft == 400) {
             clearInterval(timer);
-    } else if (left == 410) {
-      left -= 10;
+    } else if (heroLeft == 410) {
+      heroLeft -= 10;
       clearInterval(timer);
     }
   }, 16);
   //****A/Left**//
 } if(e.keyCode==65) {
   timer = setInterval(function() {
-      hero.style.left = (left -= 10) + "px";
-      if (left== 0 || left == 100 || left == 200 || left == 300) {
+      hero.style.left = (heroLeft -= 10) + "px";
+      if (heroLeft== 0 || heroLeft == 100 || heroLeft == 200 || heroLeft == 300) {
           clearInterval(timer);
-    } else if (left == -10) {
-      left += 10;
+    } else if (heroLeft == -10) {
+      heroLeft += 10;
       clearInterval(timer);
     }
 }, 16);
