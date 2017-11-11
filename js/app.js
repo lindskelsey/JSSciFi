@@ -142,13 +142,15 @@ function startChar() {
   document.getElementById("hero").className = "start";
 }
 
-document.onkeydown = moveCharNew;
+
+window.addEventListener('keydown', throttle(moveCharNew,200));
+
 
 
 /////*******More Animations***********///
 
-left = 0;
-heroTop = 0;
+var left = 0;
+var heroTop = 0;
 
 function moveCharNew(e) {
 console.log(heroTop);
@@ -202,7 +204,7 @@ console.log(heroTop);
    }
 }
 
-
+//************Get Coordinates********//
 
 function getOffsetLeft( elem )
 {
@@ -226,4 +228,30 @@ function getOffsetTop( elem )
       }
     } while( elem = elem.offsetParent );
     return offsetTop;
+}
+
+
+//**********Throttle Function********//
+
+function throttle (func, limit) {
+  var inThrottle,
+    lastFunc,
+    lastRan;
+  return function() {
+    var context = this,
+      args = arguments;
+    if (!inThrottle) {
+      func.apply(context, args);
+      lastRan = Date.now()
+      inThrottle = true;
+    } else {
+      clearTimeout(lastFunc)
+      lastFunc = setTimeout(function() {
+        if ((Date.now() - lastRan) >= limit) {
+          func.apply(context, args)
+          lastRan = Date.now()
+        }
+      }, limit - (Date.now() - lastRan))
+    }
+  };
 }
