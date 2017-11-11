@@ -212,3 +212,16 @@ function throttle (func, limit) {
     }
   };
 }
+
+//**************Create Enemy******//
+
+function createEnemy(e) {
+  if (e.keyCode == 32) {
+  var container = document.getElementById("container");
+  container.innerHTML += '<img src="images/avatars/enemy.png" class="enemy"></div>';
+}
+}
+
+
+
+window.addEventListener('keydown', createEnemy);
