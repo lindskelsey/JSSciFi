@@ -93,8 +93,7 @@ window.onload = function() {
 //**Key Codes W 87 A 65 S 83 D 68******//
 
 var hero = document.getElementById('hero');
-var heroLeft = 0;
-var heroTop = 0;
+
 
 
 function moveChar(e) {
@@ -148,16 +147,20 @@ document.onkeydown = moveCharNew;
 
 /////*******More Animations***********///
 
-left=0;
-top=0;
+left = 0;
+heroTop = 0;
 
 function moveCharNew(e) {
+console.log(heroTop);
   //****D/RIGHT**//
   if(e.keyCode==68) {
     timer = setInterval(function() {
         hero.style.left = (left += 10) + "px";
         if (left == 100 || left == 200 || left == 300 || left == 400) {
             clearInterval(timer);
+    } else if (left == 410) {
+      left -= 10;
+      clearInterval(timer);
     }
   }, 16);
   //****A/Left**//
@@ -166,24 +169,61 @@ function moveCharNew(e) {
       hero.style.left = (left -= 10) + "px";
       if (left== 0 || left == 100 || left == 200 || left == 300) {
           clearInterval(timer);
-  }
+    } else if (left == -10) {
+      left += 10;
+      clearInterval(timer);
+    }
 }, 16);
 //****W/UP**//
 } if(e.keyCode==87) {
   timer = setInterval(function() {
-      hero.style.top = (top -= 10) + "px";
-      if (top== 0 || top == 100 || top == 200 || top == 300) {
+      hero.style.top = (heroTop -= 10) + "px";
+      if (heroTop== 0 || heroTop == 100 || heroTop == 200 || heroTop == 300) {
           clearInterval(timer);
+        } else if (heroTop == -10) {
+          heroTop += 10;
+          clearInterval(timer);
+
   }
 }, 16);
 //****S/DOWN**//
-} if(e.keyCode==83) {
-  timer = setInterval(function() {
-      hero.style.top = (top += 10) + "px";
-      if (top == 100 || top == 200 || top == 300 || top == 400) {
-          clearInterval(timer);
-  }
-}, 16);
-
 }
+   if (e.keyCode == 83) {
+       timer = setInterval(function() {
+           hero.style.top = (heroTop += 10) + "px";
+           if (heroTop == 100 || heroTop == 200 || heroTop == 300 || heroTop == 400) {
+               clearInterval(timer);
+           } else if (heroTop == 410) {
+             heroTop -= 10;
+             clearInterval(timer);
+           }
+       }, 16);
+
+   }
+}
+
+
+
+function getOffsetLeft( elem )
+{
+    var offsetLeft = 0;
+    do {
+      if ( !isNaN( elem.offsetLeft ) )
+      {
+          offsetLeft += elem.offsetLeft;
+      }
+    } while( elem = elem.offsetParent );
+    return offsetLeft;
+}
+
+function getOffsetTop( elem )
+{
+    var offsetTop = 0;
+    do {
+      if ( !isNaN( elem.offsetTop ) )
+      {
+          offsetTop += elem.offsetTop;
+      }
+    } while( elem = elem.offsetParent );
+    return offsetTop;
 }
