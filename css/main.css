@@ -44,6 +44,30 @@
   position: absolute;
 }
 
+#enemy1 {
+  z-index: 9;
+  height: 60px;
+  width: 60px;
+  padding: 20px;
+  position: absolute;
+}
+
+#enemy2 {
+  z-index: 9;
+  height: 60px;
+  width: 60px;
+  padding: 20px;
+  position: absolute;
+}
+
+#enemy3 {
+  z-index: 9;
+  height: 60px;
+  width: 60px;
+  padding: 20px;
+  position: absolute;
+}
+
 
 
 //********Animation to translate to the right********//

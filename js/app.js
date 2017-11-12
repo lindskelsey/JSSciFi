@@ -193,35 +193,7 @@ function throttle(func, limit) {
     };
 }
 
-//**************Create Enemy******//
 
-function randomTile(min, max) {
-    randomNum = Math.floor(Math.random() * (max - min + 1) + min);
-    return 100 * Math.ceil(randomNum / 100);
-}
-
-
-
-
-function createEnemy(e) {
-    if (e.keyCode == 32) {
-      section = document.createElement("img");
-      section.setAttribute("src", "images/avatars/enemy.png");
-      section.setAttribute("id", "enemy");
-      document.getElementById("container").appendChild(section);
-      section.style.position = 'absolute';
-      section.style.left = ((randomTile(-100,400)-8) + "px"); // units ('px')  are unnecessary for 0 but added for clarification
-      section.style.top = ((randomTile(-100,400)-8) + "px");
-  }
-}
-
-
-
-
-
-
-
-window.addEventListener('keydown', createEnemy);
 
 //*************Collision Detection**********//
 
@@ -316,7 +288,7 @@ function getCoordinates(elem) {
 var hitCount = 1;
 
 function killEnemy(e) {
-  if(e.keyCode == 75) {
+ if(e.keyCode == 75) {
   var heroPos = getCoordinates(hero);
   var enemyPos = getCoordinates(enemy);
   if (heroPos == enemyPos) {
@@ -331,7 +303,52 @@ function killEnemy(e) {
     }
   }
 
-window.addEventListener('keydown', killEnemy);
+  function bool(){
+
+    var heroBool = !document.getElementById(hero);
+
+    console.log(heroBool);
+  }
+
+
+
+  function killEnemyTest(e) {
+    if(e.keyCode == 75) {
+
+      var heroPos = getCoordinates(hero);
+
+        if(document.getElementById('enemy1')!=null) {
+          var enemy1Pos = getCoordinates(enemy1);
+          console.log(enemy1Pos);
+        } if (heroPos == enemy1Pos) {
+            console.log("hit");
+            var enemyHit = document.getElementById("enemy1");
+            enemyHit.parentNode.removeChild(enemyHit);
+            hitFlash();
+            hitCount = 2;
+      } if(document.getElementById('enemy2')!=null) {
+          var enemy2Pos = getCoordinates(enemy2);
+        } if (heroPos == enemy2Pos) {
+            console.log("hit");
+            var enemyHit = document.getElementById("enemy2");
+            enemyHit.parentNode.removeChild(enemyHit);
+            hitFlash();
+            hitCount = 2;
+        }  if (document.getElementById('enemy3')!=null) {
+            var enemy3Pos = getCoordinates(enemy3);
+          } if (heroPos == enemy3Pos) {
+              console.log("hit");
+              var enemyHit = document.getElementById("enemy3");
+              enemyHit.parentNode.removeChild(enemyHit);
+              hitFlash();
+              hitCount = 2;
+          }  else {
+        console.log("nothit");
+      }
+      }
+    }
+
+window.addEventListener('keydown', killEnemyTest);
 window.addEventListener('keyup', flashOff);
 
 
@@ -345,4 +362,55 @@ function hitFlash() {
  if(e.keyCode == 75 && hitCount ==2){
  document.getElementById('heroattack').id = 'hero';
 } hitCount = 1;
+}
+
+
+//***SPawn**//
+
+//**************Create Enemy******//
+
+function randomTile(min, max) {
+    randomNum = Math.floor(Math.random() * (max - min + 1) + min);
+    return 100 * Math.ceil(randomNum / 100);
+}
+
+window.addEventListener('keydown', createEnemy);
+
+function spawnOne() {
+  section = document.createElement("img");
+  section.setAttribute("src", "images/avatars/enemy.png");
+  section.setAttribute("id", "enemy1");
+  document.getElementById("container").appendChild(section);
+  section.style.position = 'absolute';
+  section.style.left = ((randomTile(-100,400)-8) + "px"); // units ('px')  are unnecessary for 0 but added for clarification
+  section.style.top = ((randomTile(-100,400)-8) + "px");
+}
+
+function spawnTwo() {
+  section = document.createElement("img");
+  section.setAttribute("src", "images/avatars/enemy.png");
+  section.setAttribute("id", "enemy2");
+  document.getElementById("container").appendChild(section);
+  section.style.position = 'absolute';
+  section.style.left = ((randomTile(-100,400)-8) + "px"); // units ('px')  are unnecessary for 0 but added for clarification
+  section.style.top = ((randomTile(-100,400)-8) + "px");
+}
+
+function spawnThree() {
+  section = document.createElement("img");
+  section.setAttribute("src", "images/avatars/enemy.png");
+  section.setAttribute("id", "enemy3");
+  document.getElementById("container").appendChild(section);
+  section.style.position = 'absolute';
+  section.style.left = ((randomTile(-100,400)-8) + "px"); // units ('px')  are unnecessary for 0 but added for clarification
+  section.style.top = ((randomTile(-100,400)-8) + "px");
+}
+
+
+function createEnemy(e) {
+    if (e.keyCode == 32) {
+    setTimeout(spawnOne, 0)
+    setTimeout(spawnTwo, 2000)
+    setTimeout(spawnThree, 4000)
+}
 }
