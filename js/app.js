@@ -226,17 +226,17 @@ function getCoordinates(elem) {
   var currentTop = getOffsetTop(elem);
   var currentLeft = getOffsetLeft(elem);
 
-  if (currentTop == 0 && currentLeft == 0) {
+  if ((currentTop == 0 && currentLeft == 0) || (currentTop == -10 && currentLeft == 0) || (currentTop == 0 && currentLeft == -10) || (currentTop == -10 && currentLeft == -10)) {
     cell = 1;
-  } else if (currentTop == 0 && currentLeft == 100){
+  } else if ((currentTop == 0 && currentLeft == 100) || (currentTop == -10 && currentLeft == 100)){
     cell = 2;
-  } else if (currentTop == 0 && currentLeft == 200){
+  } else if ((currentTop == 0 && currentLeft == 200) || (currentTop == -10 && currentLeft == 200)){
     cell = 3;
-  } else if (currentTop == 0 && currentLeft == 300){
+  } else if ((currentTop == 0 && currentLeft == 300) || (currentTop == -10 && currentLeft == 300)){
     cell = 4;
-  } else if (currentTop == 0 && currentLeft == 400){
+  } else if ((currentTop == 0 && currentLeft == 400) || (currentTop == -10 && currentLeft == 400) || (currentTop == 0 && currentLeft == -410) || (currentTop == -10 && currentLeft == 410)){
     cell = 5;
-  } else if (currentTop == 100 && currentLeft == 0){
+  } else if ((currentTop == 100 && currentLeft == 0) || (currentTop == 100 && currentLeft == -10)){
     cell = 6;
   } else if (currentTop == 100 && currentLeft == 100){
     cell = 7;
@@ -244,9 +244,9 @@ function getCoordinates(elem) {
     cell = 8;
   } else if (currentTop == 100 && currentLeft == 300){
     cell = 9;
-  } else if (currentTop == 100 && currentLeft == 400){
+  } else if ((currentTop == 100 && currentLeft == 400) || (currentTop == 100 && currentLeft == 410)){
     cell = 10;
-  } else if (currentTop == 200 && currentLeft == 0){
+  } else if ((currentTop == 200 && currentLeft == 0) || (currentTop == 200 && currentLeft == -10)){
     cell = 11;
   } else if (currentTop == 200 && currentLeft == 100){
     cell = 12;
@@ -254,9 +254,9 @@ function getCoordinates(elem) {
     cell = 13;
   } else if (currentTop == 200 && currentLeft == 300){
     cell = 14;
-  } else if (currentTop == 200 && currentLeft == 400){
+  } else if ((currentTop == 200 && currentLeft == 400) || (currentTop == 200 && currentLeft == 410)){
     cell = 15;
-  } else if (currentTop == 300 && currentLeft == 0){
+  } else if ((currentTop == 300 && currentLeft == 0) || (currentTop == 300 && currentLeft == -10)){
     cell = 16;
   } else if (currentTop == 300 && currentLeft == 100){
     cell = 17;
@@ -264,9 +264,9 @@ function getCoordinates(elem) {
     cell = 18;
   } else if (currentTop == 300 && currentLeft == 300){
     cell = 19;
-  } else if (currentTop == 300 && currentLeft == 400){
+  } else if ((currentTop == 300 && currentLeft == 400) || (currentTop == 300 && currentLeft == 410)){
     cell = 20;
-  } else if (currentTop == 400 && currentLeft == 0){
+  } else if ((currentTop == 400 && currentLeft == 0) || (currentTop == 400 && currentLeft == -10) || (currentTop == 410 && currentLeft == 0) || (currentTop == 410 && currentLeft == -10)){
     cell = 21;
   } else if (currentTop == 400 && currentLeft == 100){
     cell = 22;
@@ -274,7 +274,7 @@ function getCoordinates(elem) {
     cell = 23;
   } else if (currentTop == 400 && currentLeft == 300){
     cell = 24;
-  } else if (currentTop == 400 && currentLeft == 400){
+  } else if ((currentTop == 400 && currentLeft == 400)|| (currentTop == 400 && currentLeft == 410) || (currentTop == 410 && currentLeft == 400) || (currentTop == 410 && currentLeft == 410)){
     cell = 25;
   } else {
     console.log(currentTop);
@@ -287,32 +287,9 @@ function getCoordinates(elem) {
 
 var hitCount = 1;
 
-function killEnemy(e) {
- if(e.keyCode == 75) {
-  var heroPos = getCoordinates(hero);
-  var enemyPos = getCoordinates(enemy);
-  if (heroPos == enemyPos) {
-      console.log("hit");
-      var enemyHit = document.getElementById("enemy");
-      enemyHit.parentNode.removeChild(enemyHit);
-      hitFlash();
-      hitCount= 2;
-    } else {
-      console.log("nothit");
-    }
-    }
-  }
-
-  function bool(){
-
-    var heroBool = !document.getElementById(hero);
-
-    console.log(heroBool);
-  }
 
 
-
-  function killEnemyTest(e) {
+  function killEnemy(e) {
     if(e.keyCode == 75) {
 
       var heroPos = getCoordinates(hero);
@@ -351,7 +328,7 @@ function killEnemy(e) {
       }
     }
 
-window.addEventListener('keydown', killEnemyTest);
+window.addEventListener('keydown', killEnemy);
 window.addEventListener('keyup', flashOff);
 
 
@@ -377,7 +354,7 @@ function randomTile(min, max) {
     return 100 * Math.ceil(randomNum / 100);
 }
 
-window.addEventListener('keydown', createEnemy);
+
 
 function spawnOne() {
   section = document.createElement("img");
@@ -409,14 +386,70 @@ function spawnThree() {
   section.style.top = ((randomTile(-100,400)-8) + "px");
 }
 
+function deSpawnOne() {
+  var enemyDeSpawn = document.getElementById("enemy1");
+  enemy1.parentNode.removeChild(enemyDeSpawn);
+}
 
-function createEnemy(e) {
-    if (e.keyCode == 32) {
+function deSpawnTwo() {
+  var enemyDeSpawn = document.getElementById("enemy2");
+  enemy2.parentNode.removeChild(enemyDeSpawn);
+}
+
+function deSpawnThree() {
+  var enemyDeSpawn = document.getElementById("enemy3");
+  enemy3.parentNode.removeChild(enemyDeSpawn);
+}
+
+var enemyStart = 1
+
+function createEnemy() {
+    if(document.getElementById('enemy1')==null) {
     setTimeout(spawnOne, 0)
-    setTimeout(spawnTwo, 2000)
-    setTimeout(spawnThree, 4000)
+  } if(document.getElementById('enemy2')==null) {
+    setTimeout(spawnTwo, 400)
+  } if(document.getElementById('enemy3')==null) {
+    setTimeout(spawnThree, 800)
+  } else if(document.getElementById('enemy1')!=null) {
+    setTimeout(deSpawnOne, 0)
+  } else if(document.getElementById('enemy2')!=null) {
+    setTimeout(deSpawnTwo, 400)
+  } else if(document.getElementById('enemy1')!=null) {
+    setTimeout(deSpawnThree, 800)
+  }
 }
+
+var count=1;
+
+function startSpawn() {
+    createEnemy();
+    display();
+    startTimer = setInterval(function() {
+      createEnemy();
+      count++;
+      console.log(count);
+     if(count == 44) {
+       clearInterval(startTimer);
+       gameOver();
+       console.log("game over");
+     }
+   } ,1300);
+  }
+
+
+function firstSpawn(e) {
+  if (e.keyCode == 32) {
+    startSpawn();
+  }
 }
+
+
+
+
+
+
+window.addEventListener('keydown', firstSpawn);
+
 
 //******score********//
 
@@ -428,3 +461,58 @@ function scorePlus() {
   score ++;
   scoreBoard.innerHTML = score;
 }
+
+//*********timer*******//
+
+var milisec=0
+var seconds=60
+
+
+
+function display(){
+    if (milisec<=0){
+        milisec=9
+        seconds-=1
+    }
+    if (seconds<=-1){
+        milisec=0
+        seconds+=1
+    }
+    else
+        milisec-=1
+        document.getElementById("timer").innerHTML=seconds+"."+milisec
+        setTimeout("display()",100)
+}
+
+//******Game Over*******//
+
+function gameOver() {
+  var gameOver = document.createElement("div");
+  gameOver.setAttribute("id", "gameover");
+  gameOver.innerHTML = '<p>Game Over</p><p>Score: ' + score + '</p><p>Press Shift to play again</p>';
+  document.getElementById("main").appendChild(gameOver);
+}
+
+//*******Restart Game**********//
+
+
+function resetGame(e) {
+  if(e.keyCode == 16) {
+    console.log("shift");
+    var reset = document.getElementById("gameover");
+    gameover.parentNode.removeChild(reset);
+    count = 1;
+    score = 0;
+    seconds = 60;
+    milisec=0;
+    document.getElementById("score").innerHTML='0';
+    document.getElementById("timer").innerHTML='60';
+    startSpawn();
+  }
+}
+
+document.getElementById("timer").innerHTML='60';
+
+
+
+window.addEventListener('keydown', resetGame);
