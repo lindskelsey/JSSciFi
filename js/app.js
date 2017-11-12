@@ -313,7 +313,7 @@ function getCoordinates(elem) {
 
 
 
-
+var hitCount = 1;
 
 function killEnemy(e) {
   if(e.keyCode == 75) {
@@ -324,7 +324,7 @@ function killEnemy(e) {
       var enemyHit = document.getElementById("enemy");
       enemyHit.parentNode.removeChild(enemyHit);
       hitFlash();
-      window.addEventListener('keyup', flashOff);
+      hitCount= 2;
     } else {
       console.log("nothit");
     }
@@ -332,6 +332,7 @@ function killEnemy(e) {
   }
 
 window.addEventListener('keydown', killEnemy);
+window.addEventListener('keyup', flashOff);
 
 
 //*******screen flash******//
@@ -341,7 +342,7 @@ function hitFlash() {
 
 }
  function flashOff(e) {
-
+ if(e.keyCode == 75 && hitCount ==2){
  document.getElementById('heroattack').id = 'hero';
-
+} hitCount = 1;
 }
