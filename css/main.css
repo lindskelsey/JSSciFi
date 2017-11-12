@@ -120,7 +120,7 @@
     z-index: 10;
     height: 60px;
     width: 60px;
-    margin: 20px;
+    margin: 25px;
     position: absolute;
 
   }
@@ -147,7 +147,7 @@
   z-index: 9;
   height: 60px;
   width: 60px;
-  margin: 20px;
+  margin: 25px;
   position: absolute;
   background-image: url("../images/avatars/enemysprite.png");
   background-position: 0 0;
@@ -161,7 +161,7 @@
   z-index: 9;
   height: 60px;
   width: 60px;
-  margin: 20px;
+  margin: 25px;
   position: absolute;
   background-image: url("../images/avatars/enemysprite.png");
   background-position: 0 0;
@@ -175,7 +175,7 @@
   z-index: 9;
   height: 60px;
   width: 60px;
-  margin: 20px;
+  margin: 25px;
   position: absolute;
   background-image: url("../images/avatars/enemysprite.png");
   background-position: 0 0;

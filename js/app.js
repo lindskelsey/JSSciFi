@@ -226,55 +226,55 @@ function getCoordinates(elem) {
   var currentTop = getOffsetTop(elem);
   var currentLeft = getOffsetLeft(elem);
 
-  if ((currentTop == 20 && currentLeft == 20) || (currentTop == 10 && currentLeft == 20) || (currentTop == 20 && currentLeft == 10) || (currentTop == 10 && currentLeft == 10)) {
+  if ((currentTop == 25 && currentLeft == 25) || (currentTop == 15 && currentLeft == 25) || (currentTop == 25 && currentLeft == 15) || (currentTop == 15 && currentLeft == 15)) {
     cell = 1;
-  } else if ((currentTop == 20 && currentLeft == 120) || (currentTop == 10 && currentLeft == 120)){
+  } else if ((currentTop == 25 && currentLeft == 125) || (currentTop == 15 && currentLeft == 125)){
     cell = 2;
-  } else if ((currentTop == 20 && currentLeft == 220) || (currentTop == 10 && currentLeft == 220)){
+  } else if ((currentTop == 25 && currentLeft == 225) || (currentTop == 15 && currentLeft == 225)){
     cell = 3;
-  } else if ((currentTop == 20 && currentLeft == 320) || (currentTop == 10 && currentLeft == 320)){
+  } else if ((currentTop == 25 && currentLeft == 325) || (currentTop == 15 && currentLeft == 325)){
     cell = 4;
-  } else if ((currentTop == 20 && currentLeft == 420) || (currentTop == 10 && currentLeft == 420) || (currentTop == 0 && currentLeft == -410) || (currentTop == -10 && currentLeft == 410)){
+  } else if ((currentTop == 25 && currentLeft == 425) || (currentTop == 15 && currentLeft == 425) || (currentTop == 5 && currentLeft == -415) || (currentTop == -15 && currentLeft == 415)){
     cell = 5;
-  } else if ((currentTop == 120 && currentLeft == 20) || (currentTop == 120 && currentLeft == 10)){
+  } else if ((currentTop == 125 && currentLeft == 25) || (currentTop == 125 && currentLeft == 15)){
     cell = 6;
-  } else if (currentTop == 120 && currentLeft == 120){
+  } else if (currentTop == 125 && currentLeft == 125){
     cell = 7;
-  } else if (currentTop == 120 && currentLeft == 220){
+  } else if (currentTop == 125 && currentLeft == 225){
     cell = 8;
-  } else if (currentTop == 120 && currentLeft == 320){
+  } else if (currentTop == 125 && currentLeft == 325){
     cell = 9;
-  } else if ((currentTop == 120 && currentLeft == 420) || (currentTop == 120 && currentLeft == 430)){
+  } else if ((currentTop == 125 && currentLeft == 425) || (currentTop == 125 && currentLeft == 435)){
     cell = 10;
-  } else if ((currentTop == 220 && currentLeft == 20) || (currentTop == 220 && currentLeft == 10)){
+  } else if ((currentTop == 225 && currentLeft == 25) || (currentTop == 225 && currentLeft == 15)){
     cell = 11;
-  } else if (currentTop == 220 && currentLeft == 120){
+  } else if (currentTop == 225 && currentLeft == 125){
     cell = 12;
-  } else if (currentTop == 220 && currentLeft == 220){
+  } else if (currentTop == 225 && currentLeft == 225){
     cell = 13;
-  } else if (currentTop == 220 && currentLeft == 320){
+  } else if (currentTop == 225 && currentLeft == 325){
     cell = 14;
-  } else if ((currentTop == 220 && currentLeft == 420) || (currentTop == 220 && currentLeft == 430)){
+  } else if ((currentTop == 225 && currentLeft == 425) || (currentTop == 225 && currentLeft == 435)){
     cell = 15;
-  } else if ((currentTop == 320 && currentLeft == 20) || (currentTop == 320 && currentLeft == 10)){
+  } else if ((currentTop == 325 && currentLeft == 25) || (currentTop == 325 && currentLeft == 15)){
     cell = 16;
-  } else if (currentTop == 320 && currentLeft == 120){
+  } else if (currentTop == 325 && currentLeft == 125){
     cell = 17;
-  } else if (currentTop == 320 && currentLeft == 220){
+  } else if (currentTop == 325 && currentLeft == 225){
     cell = 18;
-  } else if (currentTop == 320 && currentLeft == 320){
+  } else if (currentTop == 325 && currentLeft == 325){
     cell = 19;
-  } else if ((currentTop == 320 && currentLeft == 420) || (currentTop == 320 && currentLeft == 430)){
+  } else if ((currentTop == 325 && currentLeft == 425) || (currentTop == 325 && currentLeft == 435)){
     cell = 20;
-  } else if ((currentTop == 420 && currentLeft == 20) || (currentTop == 420 && currentLeft == 10) || (currentTop == 430 && currentLeft == 20) || (currentTop == 430 && currentLeft == 10)){
+  } else if ((currentTop == 425 && currentLeft == 25) || (currentTop == 425 && currentLeft == 15) || (currentTop == 435 && currentLeft == 25) || (currentTop == 435 && currentLeft == 15)){
     cell = 21;
-  } else if (currentTop == 420 && currentLeft == 120){
+  } else if (currentTop == 425 && currentLeft == 125){
     cell = 22;
-  } else if (currentTop == 420 && currentLeft == 220){
+  } else if (currentTop == 425 && currentLeft == 225){
     cell = 23;
-  } else if (currentTop == 420 && currentLeft == 320){
+  } else if (currentTop == 425 && currentLeft == 325){
     cell = 24;
-  } else if ((currentTop == 420 && currentLeft == 420)|| (currentTop == 420 && currentLeft == 430) || (currentTop == 430 && currentLeft == 420) || (currentTop == 430 && currentLeft == 430)){
+  } else if ((currentTop == 425 && currentLeft == 425)|| (currentTop == 425 && currentLeft == 435) || (currentTop == 435 && currentLeft == 425) || (currentTop == 435 && currentLeft == 435)){
     cell = 25;
   } else {
     console.log(currentTop);
