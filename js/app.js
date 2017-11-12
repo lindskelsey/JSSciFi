@@ -92,7 +92,7 @@ window.onload = function() {
 
 //**Key Codes W 87 A 65 S 83 D 68******//
 
-var hero = document.getElementById('hero');
+
 
 //***********START CHAR AT TOP=0 LEFT=0************//
 
@@ -195,14 +195,29 @@ function throttle(func, limit) {
 
 //**************Create Enemy******//
 
+function randomTile(min, max) {
+    randomNum = Math.floor(Math.random() * (max - min + 1) + min);
+    return 100 * Math.ceil(randomNum / 100);
+}
+
+
 
 
 function createEnemy(e) {
     if (e.keyCode == 32) {
-        var container = document.getElementById("container");
-        container.innerHTML += '<img src="images/avatars/enemy.png" id="enemy"></div>';
-    }
+      section = document.createElement("img");
+      section.setAttribute("src", "images/avatars/enemy.png");
+      section.setAttribute("id", "enemy");
+      document.getElementById("container").appendChild(section);
+      section.style.position = 'absolute';
+      section.style.left = ((randomTile(-100,400)-8) + "px"); // units ('px')  are unnecessary for 0 but added for clarification
+      section.style.top = ((randomTile(-100,400)-8) + "px");
+  }
 }
+
+
+
+
 
 
 
@@ -241,11 +256,63 @@ function getCoordinates(elem) {
 
   if (currentTop == 0 && currentLeft == 0) {
     cell = 1;
+  } else if (currentTop == 0 && currentLeft == 100){
+    cell = 2;
+  } else if (currentTop == 0 && currentLeft == 200){
+    cell = 3;
+  } else if (currentTop == 0 && currentLeft == 300){
+    cell = 4;
+  } else if (currentTop == 0 && currentLeft == 400){
+    cell = 5;
+  } else if (currentTop == 100 && currentLeft == 0){
+    cell = 6;
+  } else if (currentTop == 100 && currentLeft == 100){
+    cell = 7;
+  } else if (currentTop == 100 && currentLeft == 200){
+    cell = 8;
+  } else if (currentTop == 100 && currentLeft == 300){
+    cell = 9;
+  } else if (currentTop == 100 && currentLeft == 400){
+    cell = 10;
+  } else if (currentTop == 200 && currentLeft == 0){
+    cell = 11;
+  } else if (currentTop == 200 && currentLeft == 100){
+    cell = 12;
   } else if (currentTop == 200 && currentLeft == 200){
     cell = 13;
+  } else if (currentTop == 200 && currentLeft == 300){
+    cell = 14;
+  } else if (currentTop == 200 && currentLeft == 400){
+    cell = 15;
+  } else if (currentTop == 300 && currentLeft == 0){
+    cell = 16;
+  } else if (currentTop == 300 && currentLeft == 100){
+    cell = 17;
+  } else if (currentTop == 300 && currentLeft == 200){
+    cell = 18;
+  } else if (currentTop == 300 && currentLeft == 300){
+    cell = 19;
+  } else if (currentTop == 300 && currentLeft == 400){
+    cell = 20;
+  } else if (currentTop == 400 && currentLeft == 0){
+    cell = 21;
+  } else if (currentTop == 400 && currentLeft == 100){
+    cell = 22;
+  } else if (currentTop == 400 && currentLeft == 200){
+    cell = 23;
+  } else if (currentTop == 400 && currentLeft == 300){
+    cell = 24;
+  } else if (currentTop == 400 && currentLeft == 400){
+    cell = 25;
+  } else {
+    console.log(currentTop);
+    console.log(currentLeft);
   }
   return cell;
 }
+
+
+
 
 
 function killEnemy(e) {

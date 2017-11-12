@@ -27,14 +27,11 @@
 }
 
 #enemy {
-  z-index: 10;
+  z-index: 9;
   height: 60px;
   width: 60px;
   padding: 20px;
   position: absolute;
-  left: -192px;
-  top: -192px;
-
 }
 
 
