@@ -325,6 +325,7 @@ function killEnemy(e) {
             var enemyHit = document.getElementById("enemy1");
             enemyHit.parentNode.removeChild(enemyHit);
             hitFlash();
+            scorePlus();
             hitCount = 2;
       } if(document.getElementById('enemy2')!=null) {
           var enemy2Pos = getCoordinates(enemy2);
@@ -333,6 +334,7 @@ function killEnemy(e) {
             var enemyHit = document.getElementById("enemy2");
             enemyHit.parentNode.removeChild(enemyHit);
             hitFlash();
+            scorePlus();
             hitCount = 2;
         }  if (document.getElementById('enemy3')!=null) {
             var enemy3Pos = getCoordinates(enemy3);
@@ -341,6 +343,7 @@ function killEnemy(e) {
               var enemyHit = document.getElementById("enemy3");
               enemyHit.parentNode.removeChild(enemyHit);
               hitFlash();
+              scorePlus();
               hitCount = 2;
           }  else {
         console.log("nothit");
@@ -413,4 +416,15 @@ function createEnemy(e) {
     setTimeout(spawnTwo, 2000)
     setTimeout(spawnThree, 4000)
 }
+}
+
+//******score********//
+
+
+var score = 0;
+var scoreBoard = document.getElementById('score');
+
+function scorePlus() {
+  score ++;
+  scoreBoard.innerHTML = score;
 }
