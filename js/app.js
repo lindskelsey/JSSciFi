@@ -222,65 +222,65 @@ function getOffsetTop(elem) {
 //**********FIND CELL*************//
 
 function getCoordinates(elem) {
-  var cell;
-  var currentTop = getOffsetTop(elem);
-  var currentLeft = getOffsetLeft(elem);
+    var cell;
+    var currentTop = getOffsetTop(elem);
+    var currentLeft = getOffsetLeft(elem);
 
-  if ((currentTop == 25 && currentLeft == 25) || (currentTop == 15 && currentLeft == 25) || (currentTop == 25 && currentLeft == 15) || (currentTop == 15 && currentLeft == 15)) {
-    cell = 1;
-  } else if ((currentTop == 25 && currentLeft == 125) || (currentTop == 15 && currentLeft == 125)){
-    cell = 2;
-  } else if ((currentTop == 25 && currentLeft == 225) || (currentTop == 15 && currentLeft == 225)){
-    cell = 3;
-  } else if ((currentTop == 25 && currentLeft == 325) || (currentTop == 15 && currentLeft == 325)){
-    cell = 4;
-  } else if ((currentTop == 25 && currentLeft == 425) || (currentTop == 15 && currentLeft == 425) || (currentTop == 5 && currentLeft == -415) || (currentTop == -15 && currentLeft == 415)){
-    cell = 5;
-  } else if ((currentTop == 125 && currentLeft == 25) || (currentTop == 125 && currentLeft == 15)){
-    cell = 6;
-  } else if (currentTop == 125 && currentLeft == 125){
-    cell = 7;
-  } else if (currentTop == 125 && currentLeft == 225){
-    cell = 8;
-  } else if (currentTop == 125 && currentLeft == 325){
-    cell = 9;
-  } else if ((currentTop == 125 && currentLeft == 425) || (currentTop == 125 && currentLeft == 435)){
-    cell = 10;
-  } else if ((currentTop == 225 && currentLeft == 25) || (currentTop == 225 && currentLeft == 15)){
-    cell = 11;
-  } else if (currentTop == 225 && currentLeft == 125){
-    cell = 12;
-  } else if (currentTop == 225 && currentLeft == 225){
-    cell = 13;
-  } else if (currentTop == 225 && currentLeft == 325){
-    cell = 14;
-  } else if ((currentTop == 225 && currentLeft == 425) || (currentTop == 225 && currentLeft == 435)){
-    cell = 15;
-  } else if ((currentTop == 325 && currentLeft == 25) || (currentTop == 325 && currentLeft == 15)){
-    cell = 16;
-  } else if (currentTop == 325 && currentLeft == 125){
-    cell = 17;
-  } else if (currentTop == 325 && currentLeft == 225){
-    cell = 18;
-  } else if (currentTop == 325 && currentLeft == 325){
-    cell = 19;
-  } else if ((currentTop == 325 && currentLeft == 425) || (currentTop == 325 && currentLeft == 435)){
-    cell = 20;
-  } else if ((currentTop == 425 && currentLeft == 25) || (currentTop == 425 && currentLeft == 15) || (currentTop == 435 && currentLeft == 25) || (currentTop == 435 && currentLeft == 15)){
-    cell = 21;
-  } else if (currentTop == 425 && currentLeft == 125){
-    cell = 22;
-  } else if (currentTop == 425 && currentLeft == 225){
-    cell = 23;
-  } else if (currentTop == 425 && currentLeft == 325){
-    cell = 24;
-  } else if ((currentTop == 425 && currentLeft == 425)|| (currentTop == 425 && currentLeft == 435) || (currentTop == 435 && currentLeft == 425) || (currentTop == 435 && currentLeft == 435)){
-    cell = 25;
-  } else {
-    console.log(currentTop);
-    console.log(currentLeft);
-  }
-  return cell;
+    if ((currentTop == 25 && currentLeft == 25) || (currentTop == 15 && currentLeft == 25) || (currentTop == 25 && currentLeft == 15) || (currentTop == 15 && currentLeft == 15)) {
+        cell = 1;
+    } else if ((currentTop == 25 && currentLeft == 125) || (currentTop == 15 && currentLeft == 125)) {
+        cell = 2;
+    } else if ((currentTop == 25 && currentLeft == 225) || (currentTop == 15 && currentLeft == 225)) {
+        cell = 3;
+    } else if ((currentTop == 25 && currentLeft == 325) || (currentTop == 15 && currentLeft == 325)) {
+        cell = 4;
+    } else if ((currentTop == 25 && currentLeft == 425) || (currentTop == 15 && currentLeft == 425) || (currentTop == 5 && currentLeft == -415) || (currentTop == -15 && currentLeft == 415)) {
+        cell = 5;
+    } else if ((currentTop == 125 && currentLeft == 25) || (currentTop == 125 && currentLeft == 15)) {
+        cell = 6;
+    } else if (currentTop == 125 && currentLeft == 125) {
+        cell = 7;
+    } else if (currentTop == 125 && currentLeft == 225) {
+        cell = 8;
+    } else if (currentTop == 125 && currentLeft == 325) {
+        cell = 9;
+    } else if ((currentTop == 125 && currentLeft == 425) || (currentTop == 125 && currentLeft == 435)) {
+        cell = 10;
+    } else if ((currentTop == 225 && currentLeft == 25) || (currentTop == 225 && currentLeft == 15)) {
+        cell = 11;
+    } else if (currentTop == 225 && currentLeft == 125) {
+        cell = 12;
+    } else if (currentTop == 225 && currentLeft == 225) {
+        cell = 13;
+    } else if (currentTop == 225 && currentLeft == 325) {
+        cell = 14;
+    } else if ((currentTop == 225 && currentLeft == 425) || (currentTop == 225 && currentLeft == 435)) {
+        cell = 15;
+    } else if ((currentTop == 325 && currentLeft == 25) || (currentTop == 325 && currentLeft == 15)) {
+        cell = 16;
+    } else if (currentTop == 325 && currentLeft == 125) {
+        cell = 17;
+    } else if (currentTop == 325 && currentLeft == 225) {
+        cell = 18;
+    } else if (currentTop == 325 && currentLeft == 325) {
+        cell = 19;
+    } else if ((currentTop == 325 && currentLeft == 425) || (currentTop == 325 && currentLeft == 435)) {
+        cell = 20;
+    } else if ((currentTop == 425 && currentLeft == 25) || (currentTop == 425 && currentLeft == 15) || (currentTop == 435 && currentLeft == 25) || (currentTop == 435 && currentLeft == 15)) {
+        cell = 21;
+    } else if (currentTop == 425 && currentLeft == 125) {
+        cell = 22;
+    } else if (currentTop == 425 && currentLeft == 225) {
+        cell = 23;
+    } else if (currentTop == 425 && currentLeft == 325) {
+        cell = 24;
+    } else if ((currentTop == 425 && currentLeft == 425) || (currentTop == 425 && currentLeft == 435) || (currentTop == 435 && currentLeft == 425) || (currentTop == 435 && currentLeft == 435)) {
+        cell = 25;
+    } else {
+        console.log(currentTop);
+        console.log(currentLeft);
+    }
+    return cell;
 }
 
 
@@ -289,44 +289,49 @@ var hitCount = 1;
 
 
 
-  function killEnemy(e) {
-    if(e.keyCode == 75) {
+function killEnemy(e) {
+    if (e.keyCode == 75) {
 
-      var heroPos = getCoordinates(hero);
+        var heroPos = getCoordinates(hero);
 
-        if(document.getElementById('enemy1')!=null) {
-          var enemy1Pos = getCoordinates(enemy1);
-          console.log(enemy1Pos);
-        } if (heroPos == enemy1Pos) {
+        if (document.getElementById('enemy1') != null) {
+            var enemy1Pos = getCoordinates(enemy1);
+            console.log(enemy1Pos);
+        }
+        if (heroPos == enemy1Pos) {
             console.log("hit");
             var enemyHit = document.getElementById("enemy1");
             enemyHit.parentNode.removeChild(enemyHit);
             hitFlash();
             scorePlus();
             hitCount = 2;
-      } if(document.getElementById('enemy2')!=null) {
-          var enemy2Pos = getCoordinates(enemy2);
-        } if (heroPos == enemy2Pos) {
+        }
+        if (document.getElementById('enemy2') != null) {
+            var enemy2Pos = getCoordinates(enemy2);
+        }
+        if (heroPos == enemy2Pos) {
             console.log("hit");
             var enemyHit = document.getElementById("enemy2");
             enemyHit.parentNode.removeChild(enemyHit);
             hitFlash();
             scorePlus();
             hitCount = 2;
-        }  if (document.getElementById('enemy3')!=null) {
+        }
+        if (document.getElementById('enemy3') != null) {
             var enemy3Pos = getCoordinates(enemy3);
-          } if (heroPos == enemy3Pos) {
-              console.log("hit");
-              var enemyHit = document.getElementById("enemy3");
-              enemyHit.parentNode.removeChild(enemyHit);
-              hitFlash();
-              scorePlus();
-              hitCount = 2;
-          }  else {
-        console.log("nothit");
-      }
-      }
+        }
+        if (heroPos == enemy3Pos) {
+            console.log("hit");
+            var enemyHit = document.getElementById("enemy3");
+            enemyHit.parentNode.removeChild(enemyHit);
+            hitFlash();
+            scorePlus();
+            hitCount = 2;
+        } else {
+            console.log("nothit");
+        }
     }
+}
 
 window.addEventListener('keydown', killEnemy);
 window.addEventListener('keyup', flashOff);
@@ -335,13 +340,15 @@ window.addEventListener('keyup', flashOff);
 //*******screen flash******//
 
 function hitFlash() {
- document.getElementById('hero').id = 'heroattack';
+    document.getElementById('hero').id = 'heroattack';
 
 }
- function flashOff(e) {
- if(e.keyCode == 75 && hitCount ==2){
- document.getElementById('heroattack').id = 'hero';
-} hitCount = 1;
+
+function flashOff(e) {
+    if (e.keyCode == 75 && hitCount == 2) {
+        document.getElementById('heroattack').id = 'hero';
+    }
+    hitCount = 1;
 }
 
 
@@ -357,90 +364,90 @@ function randomTile(min, max) {
 
 
 function spawnOne() {
-  section = document.createElement("div");
-  section.setAttribute("id", "enemy1");
-  document.getElementById("container").appendChild(section);
-  section.style.position = 'absolute';
-  section.style.left = (((randomTile(-100,400)) -8) + "px"); // units ('px')  are unnecessary for 0 but added for clarification
-  section.style.top = (((randomTile(-100,400)) -8) + "px");
+    section = document.createElement("div");
+    section.setAttribute("id", "enemy1");
+    document.getElementById("container").appendChild(section);
+    section.style.position = 'absolute';
+    section.style.left = (((randomTile(-100, 400)) - 8) + "px");
+    section.style.top = (((randomTile(-100, 400)) - 8) + "px");
 }
 
 function spawnTwo() {
-  section = document.createElement("div");
-  section.setAttribute("id", "enemy2");
-  document.getElementById("container").appendChild(section);
-  section.style.position = 'absolute';
-  section.style.left = (((randomTile(-100,400)) -8) + "px");
-  section.style.top = (((randomTile(-100,400)) -8) + "px");
+    section = document.createElement("div");
+    section.setAttribute("id", "enemy2");
+    document.getElementById("container").appendChild(section);
+    section.style.position = 'absolute';
+    section.style.left = (((randomTile(-100, 400)) - 8) + "px");
+    section.style.top = (((randomTile(-100, 400)) - 8) + "px");
 }
 
 function spawnThree() {
-  section = document.createElement("div");
-  section.setAttribute("id", "enemy3");
-  document.getElementById("container").appendChild(section);
-  section.style.position = 'absolute';
-  section.style.left = (((randomTile(-100,400)) -8) + "px");
-  section.style.top = (((randomTile(-100,400)) -8) + "px");
+    section = document.createElement("div");
+    section.setAttribute("id", "enemy3");
+    document.getElementById("container").appendChild(section);
+    section.style.position = 'absolute';
+    section.style.left = (((randomTile(-100, 400)) - 8) + "px");
+    section.style.top = (((randomTile(-100, 400)) - 8) + "px");
 }
 
 function deSpawnOne() {
-  var enemyDeSpawn = document.getElementById("enemy1");
-  enemy1.parentNode.removeChild(enemyDeSpawn);
+    var enemyDeSpawn = document.getElementById("enemy1");
+    enemy1.parentNode.removeChild(enemyDeSpawn);
 }
 
 function deSpawnTwo() {
-  var enemyDeSpawn = document.getElementById("enemy2");
-  enemy2.parentNode.removeChild(enemyDeSpawn);
+    var enemyDeSpawn = document.getElementById("enemy2");
+    enemy2.parentNode.removeChild(enemyDeSpawn);
 }
 
 function deSpawnThree() {
-  var enemyDeSpawn = document.getElementById("enemy3");
-  enemy3.parentNode.removeChild(enemyDeSpawn);
+    var enemyDeSpawn = document.getElementById("enemy3");
+    enemy3.parentNode.removeChild(enemyDeSpawn);
 }
 
 var enemyStart = 1
 
 function createEnemy() {
-    if(document.getElementById('enemy1')==null) {
-    setTimeout(spawnOne, 0)
-  } if(document.getElementById('enemy2')==null) {
-    setTimeout(spawnTwo, 400)
-  } if(document.getElementById('enemy3')==null) {
-    setTimeout(spawnThree, 800)
-  } else if(document.getElementById('enemy1')!=null) {
-    setTimeout(deSpawnOne, 0)
-  } else if(document.getElementById('enemy2')!=null) {
-    setTimeout(deSpawnTwo, 400)
-  } else if(document.getElementById('enemy1')!=null) {
-    setTimeout(deSpawnThree, 800)
-  }
+    if (document.getElementById('enemy1') == null) {
+        setTimeout(spawnOne, 0)
+    }
+    if (document.getElementById('enemy2') == null) {
+        setTimeout(spawnTwo, 400)
+    }
+    if (document.getElementById('enemy3') == null) {
+        setTimeout(spawnThree, 800)
+    } else if (document.getElementById('enemy1') != null) {
+        setTimeout(deSpawnOne, 0)
+    } else if (document.getElementById('enemy2') != null) {
+        setTimeout(deSpawnTwo, 400)
+    } else if (document.getElementById('enemy1') != null) {
+        setTimeout(deSpawnThree, 800)
+    }
 }
 
-var count=1;
+var count = 1;
 
 function startSpawn() {
     createEnemy();
     display();
     startTimer = setInterval(function() {
-      createEnemy();
-      count++;
-      console.log(count);
-     if(count == 44) {
-       clearInterval(startTimer);
-       gameOver();
-       console.log("game over");
-     }
-   } ,1300);
-  }
-
-
-function firstSpawn(e) {
-  if (e.keyCode == 32) {
-    startSpawn();
-  }
+        createEnemy();
+        count++;
+        console.log(count);
+        if (count == 44) {
+            clearInterval(startTimer);
+            gameOver();
+            console.log("game over");
+        }
+    }, 1300);
 }
 
 
+function firstSpawn(e) {
+    if (e.keyCode == 32) {
+        startSpawn();
+    }
+}
 
 
 
@@ -455,60 +462,59 @@ var score = 0;
 var scoreBoard = document.getElementById('score');
 
 function scorePlus() {
-  score ++;
-  scoreBoard.innerHTML = score;
+    score++;
+    scoreBoard.innerHTML = score;
 }
 
 //*********timer*******//
 
-var milisec=0
-var seconds=60
+var milisec = 0
+var seconds = 60
 
 
 
-function display(){
-    if (milisec<=0){
-        milisec=9
-        seconds-=1
+function display() {
+    if (milisec <= 0) {
+        milisec = 9
+        seconds -= 1
     }
-    if (seconds<=-1){
-        milisec=0
-        seconds+=1
-    }
-    else
-        milisec-=1
-        document.getElementById("timer").innerHTML=seconds+"."+milisec
-        setTimeout("display()",100)
+    if (seconds <= -1) {
+        milisec = 0
+        seconds += 1
+    } else
+        milisec -= 1
+    document.getElementById("timer").innerHTML = seconds + "." + milisec
+    setTimeout("display()", 100)
 }
 
 //******Game Over*******//
 
 function gameOver() {
-  var gameOver = document.createElement("div");
-  gameOver.setAttribute("id", "gameover");
-  gameOver.innerHTML = '<p>Game Over</p><p>Score: ' + score + '</p><p>Press Shift to play again</p>';
-  document.getElementById("main").appendChild(gameOver);
+    var gameOver = document.createElement("div");
+    gameOver.setAttribute("id", "gameover");
+    gameOver.innerHTML = '<p>Game Over</p><p>Score: ' + score + '</p><p>Press Shift to play again</p>';
+    document.getElementById("main").appendChild(gameOver);
 }
 
 //*******Restart Game**********//
 
 
 function resetGame(e) {
-   if(e.keyCode == 16) {
-    console.log("shift");
-    var reset = document.getElementById("gameover");
-    gameover.parentNode.removeChild(reset);
-    count = 1;
-    score = 0;
-    seconds = 60;
-    milisec=0;
-    document.getElementById("score").innerHTML='0';
-    document.getElementById("timer").innerHTML='60';
-    startSpawn();
-  }
+    if (e.keyCode == 16) {
+        console.log("shift");
+        var reset = document.getElementById("gameover");
+        gameover.parentNode.removeChild(reset);
+        count = 1;
+        score = 0;
+        seconds = 60;
+        milisec = 0;
+        document.getElementById("score").innerHTML = '0';
+        document.getElementById("timer").innerHTML = '60';
+        startSpawn();
+    }
 }
 
-document.getElementById("timer").innerHTML='60';
+document.getElementById("timer").innerHTML = '60';
 
 //*********Event Listeners**************//
 
