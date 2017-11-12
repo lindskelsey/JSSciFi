@@ -26,14 +26,14 @@
   top: 0;
 }
 
-.enemy {
+#enemy {
   z-index: 10;
   height: 60px;
   width: 60px;
   padding: 20px;
   position: absolute;
-  left: 200px;
-  top: 200px;
+  left: -192px;
+  top: -192px;
 
 }
 

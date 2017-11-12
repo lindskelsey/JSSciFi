@@ -97,11 +97,11 @@ var hero = document.getElementById('hero');
 //***********START CHAR AT TOP=0 LEFT=0************//
 
 function startChar() {
-  document.getElementById("hero").className = "start";
+    document.getElementById("hero").className = "start";
 }
 
 
-window.addEventListener('keydown', throttle(moveCharNew,200));
+window.addEventListener('keydown', throttle(moveCharNew, 200));
 
 
 
@@ -111,117 +111,155 @@ var heroLeft = 0;
 var heroTop = 0;
 
 function moveCharNew(e) {
-  //****D/RIGHT**//
-  if(e.keyCode==68) {
-    timer = setInterval(function() {
-        hero.style.left = (heroLeft += 10) + "px";
-        if (heroLeft == 100 || heroLeft == 200 || heroLeft == 300 || heroLeft == 400) {
-            clearInterval(timer);
-    } else if (heroLeft == 410) {
-      heroLeft -= 10;
-      clearInterval(timer);
+    //****D/RIGHT**//
+    if (e.keyCode == 68) {
+        timer = setInterval(function() {
+            hero.style.left = (heroLeft += 10) + "px";
+            if (heroLeft == 100 || heroLeft == 200 || heroLeft == 300 || heroLeft == 400) {
+                clearInterval(timer);
+            } else if (heroLeft == 410) {
+                heroLeft -= 10;
+                clearInterval(timer);
+            }
+        }, 16);
+
+        //****A/Left**//
     }
-  }, 16);
-  //****A/Left**//
-} if(e.keyCode==65) {
-  timer = setInterval(function() {
-      hero.style.left = (heroLeft -= 10) + "px";
-      if (heroLeft== 0 || heroLeft == 100 || heroLeft == 200 || heroLeft == 300) {
-          clearInterval(timer);
-    } else if (heroLeft == -10) {
-      heroLeft += 10;
-      clearInterval(timer);
+    if (e.keyCode == 65) {
+        timer = setInterval(function() {
+            hero.style.left = (heroLeft -= 10) + "px";
+            if (heroLeft == 0 || heroLeft == 100 || heroLeft == 200 || heroLeft == 300) {
+                clearInterval(timer);
+            } else if (heroLeft == -10) {
+                heroLeft += 10;
+                clearInterval(timer);
+            }
+        }, 16);
+
+        //****W/UP**//
     }
-}, 16);
-//****W/UP**//
-} if(e.keyCode==87) {
-  timer = setInterval(function() {
-      hero.style.top = (heroTop -= 10) + "px";
-      if (heroTop== 0 || heroTop == 100 || heroTop == 200 || heroTop == 300) {
-          clearInterval(timer);
-        } else if (heroTop == -10) {
-          heroTop += 10;
-          clearInterval(timer);
+    if (e.keyCode == 87) {
+        timer = setInterval(function() {
+            hero.style.top = (heroTop -= 10) + "px";
+            if (heroTop == 0 || heroTop == 100 || heroTop == 200 || heroTop == 300) {
+                clearInterval(timer);
+            } else if (heroTop == -10) {
+                heroTop += 10;
+                clearInterval(timer);
 
-  }
-}, 16);
-//****S/DOWN**//
-}
-   if (e.keyCode == 83) {
-       timer = setInterval(function() {
-           hero.style.top = (heroTop += 10) + "px";
-           if (heroTop == 100 || heroTop == 200 || heroTop == 300 || heroTop == 400) {
-               clearInterval(timer);
-           } else if (heroTop == 410) {
-             heroTop -= 10;
-             clearInterval(timer);
-           }
-       }, 16);
+            }
+        }, 16);
 
-   }
-}
+        //****S/DOWN**//
+    }
+    if (e.keyCode == 83) {
+        timer = setInterval(function() {
+            hero.style.top = (heroTop += 10) + "px";
+            if (heroTop == 100 || heroTop == 200 || heroTop == 300 || heroTop == 400) {
+                clearInterval(timer);
+            } else if (heroTop == 410) {
+                heroTop -= 10;
+                clearInterval(timer);
+            }
+        }, 16);
 
-//************Get Coordinates********//
-
-function getOffsetLeft( elem )
-{
-    var offsetLeft = 0;
-    do {
-      if ( !isNaN( elem.offsetLeft ) )
-      {
-          offsetLeft += elem.offsetLeft;
-      }
-    } while( elem = elem.offsetParent );
-    return offsetLeft;
+    }
 }
 
-function getOffsetTop( elem )
-{
-    var offsetTop = 0;
-    do {
-      if ( !isNaN( elem.offsetTop ) )
-      {
-          offsetTop += elem.offsetTop;
-      }
-    } while( elem = elem.offsetParent );
-    return offsetTop;
-}
 
 
 //**********Throttle Function********//
 
-function throttle (func, limit) {
-  var inThrottle,
-    lastFunc,
-    lastRan;
-  return function() {
-    var context = this,
-      args = arguments;
-    if (!inThrottle) {
-      func.apply(context, args);
-      lastRan = Date.now()
-      inThrottle = true;
-    } else {
-      clearTimeout(lastFunc)
-      lastFunc = setTimeout(function() {
-        if ((Date.now() - lastRan) >= limit) {
-          func.apply(context, args)
-          lastRan = Date.now()
+function throttle(func, limit) {
+    var inThrottle,
+        lastFunc,
+        lastRan;
+    return function() {
+        var context = this,
+            args = arguments;
+        if (!inThrottle) {
+            func.apply(context, args);
+            lastRan = Date.now()
+            inThrottle = true;
+        } else {
+            clearTimeout(lastFunc)
+            lastFunc = setTimeout(function() {
+                if ((Date.now() - lastRan) >= limit) {
+                    func.apply(context, args)
+                    lastRan = Date.now()
+                }
+            }, limit - (Date.now() - lastRan))
         }
-      }, limit - (Date.now() - lastRan))
-    }
-  };
+    };
 }
 
 //**************Create Enemy******//
 
+
+
 function createEnemy(e) {
-  if (e.keyCode == 32) {
-  var container = document.getElementById("container");
-  container.innerHTML += '<img src="images/avatars/enemy.png" class="enemy"></div>';
-}
+    if (e.keyCode == 32) {
+        var container = document.getElementById("container");
+        container.innerHTML += '<img src="images/avatars/enemy.png" id="enemy"></div>';
+    }
 }
 
 
 
 window.addEventListener('keydown', createEnemy);
+
+//*************Collision Detection**********//
+
+function getOffsetLeft(elem) {
+    var offsetLeft = 0;
+    do {
+        if (!isNaN(elem.offsetLeft)) {
+            offsetLeft += elem.offsetLeft;
+        }
+    } while (elem = elem.offsetParent);
+    return offsetLeft;
+}
+
+function getOffsetTop(elem) {
+    var offsetTop = 0;
+    do {
+        if (!isNaN(elem.offsetTop)) {
+            offsetTop += elem.offsetTop;
+        }
+    } while (elem = elem.offsetParent);
+    return offsetTop;
+}
+
+
+
+//**********FIND CELL*************//
+
+function getCoordinates(elem) {
+  var cell;
+  var currentTop = getOffsetTop(elem);
+  var currentLeft = getOffsetLeft(elem);
+
+  if (currentTop == 0 && currentLeft == 0) {
+    cell = 1;
+  } else if (currentTop == 200 && currentLeft == 200){
+    cell = 13;
+  }
+  return cell;
+}
+
+
+function killEnemy(e) {
+  if(e.keyCode == 75) {
+  var heroPos = getCoordinates(hero);
+  var enemyPos = getCoordinates(enemy);
+  if (heroPos == enemyPos) {
+      console.log("hit");
+      var enemyHit = document.getElementById("enemy");
+      enemyHit.parentNode.removeChild(enemyHit);
+    } else {
+      console.log("nothit");
+    }
+    }
+  }
+
+window.addEventListener('keydown', killEnemy);
