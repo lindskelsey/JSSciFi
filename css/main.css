@@ -13,14 +13,7 @@
   outline: 1px solid black;
 }
 
-#hero {
-  z-index: 10;
-  height: 60px;
-  width: 60px;
-  padding: 20px;
-  position: absolute;
 
-}
 
 #heroattack {
   z-index: 10;
@@ -44,29 +37,7 @@
   position: absolute;
 }
 
-#enemy1 {
-  z-index: 9;
-  height: 60px;
-  width: 60px;
-  padding: 20px;
-  position: absolute;
-}
 
-#enemy2 {
-  z-index: 9;
-  height: 60px;
-  width: 60px;
-  padding: 20px;
-  position: absolute;
-}
-
-#enemy3 {
-  z-index: 9;
-  height: 60px;
-  width: 60px;
-  padding: 20px;
-  position: absolute;
-}
 
 .scoreboard {
   border: 2px solid black;
@@ -142,3 +113,74 @@
       -o-animation: mover .5s ease-in-out forwards;
       animation: mover .5s ease-in-out forwards;
   }
+
+  /******Sprite Test*******/
+
+  #hero {
+    z-index: 10;
+    height: 60px;
+    width: 60px;
+    margin: 20px;
+    position: absolute;
+
+  }
+
+  #hero {
+    background-image: url("../images/avatars/herosprite.png");
+    background-position: 0 0;
+    animation-name: run-x;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(2);
+}
+
+@keyframes run-x {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: -120px;
+    }
+}
+
+#enemy1 {
+  z-index: 9;
+  height: 60px;
+  width: 60px;
+  margin: 20px;
+  position: absolute;
+  background-image: url("../images/avatars/enemysprite.png");
+  background-position: 0 0;
+  animation-name: run-x;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(2);
+}
+
+#enemy2 {
+  z-index: 9;
+  height: 60px;
+  width: 60px;
+  margin: 20px;
+  position: absolute;
+  background-image: url("../images/avatars/enemysprite.png");
+  background-position: 0 0;
+  animation-name: run-x;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(2);
+}
+
+#enemy3 {
+  z-index: 9;
+  height: 60px;
+  width: 60px;
+  margin: 20px;
+  position: absolute;
+  background-image: url("../images/avatars/enemysprite.png");
+  background-position: 0 0;
+  animation-name: run-x;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(2);
+}

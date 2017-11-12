@@ -226,55 +226,55 @@ function getCoordinates(elem) {
   var currentTop = getOffsetTop(elem);
   var currentLeft = getOffsetLeft(elem);
 
-  if ((currentTop == 0 && currentLeft == 0) || (currentTop == -10 && currentLeft == 0) || (currentTop == 0 && currentLeft == -10) || (currentTop == -10 && currentLeft == -10)) {
+  if ((currentTop == 20 && currentLeft == 20) || (currentTop == 10 && currentLeft == 20) || (currentTop == 20 && currentLeft == 10) || (currentTop == 10 && currentLeft == 10)) {
     cell = 1;
-  } else if ((currentTop == 0 && currentLeft == 100) || (currentTop == -10 && currentLeft == 100)){
+  } else if ((currentTop == 20 && currentLeft == 120) || (currentTop == 10 && currentLeft == 120)){
     cell = 2;
-  } else if ((currentTop == 0 && currentLeft == 200) || (currentTop == -10 && currentLeft == 200)){
+  } else if ((currentTop == 20 && currentLeft == 220) || (currentTop == 10 && currentLeft == 220)){
     cell = 3;
-  } else if ((currentTop == 0 && currentLeft == 300) || (currentTop == -10 && currentLeft == 300)){
+  } else if ((currentTop == 20 && currentLeft == 320) || (currentTop == 10 && currentLeft == 320)){
     cell = 4;
-  } else if ((currentTop == 0 && currentLeft == 400) || (currentTop == -10 && currentLeft == 400) || (currentTop == 0 && currentLeft == -410) || (currentTop == -10 && currentLeft == 410)){
+  } else if ((currentTop == 20 && currentLeft == 420) || (currentTop == 10 && currentLeft == 420) || (currentTop == 0 && currentLeft == -410) || (currentTop == -10 && currentLeft == 410)){
     cell = 5;
-  } else if ((currentTop == 100 && currentLeft == 0) || (currentTop == 100 && currentLeft == -10)){
+  } else if ((currentTop == 120 && currentLeft == 20) || (currentTop == 120 && currentLeft == 10)){
     cell = 6;
-  } else if (currentTop == 100 && currentLeft == 100){
+  } else if (currentTop == 120 && currentLeft == 120){
     cell = 7;
-  } else if (currentTop == 100 && currentLeft == 200){
+  } else if (currentTop == 120 && currentLeft == 220){
     cell = 8;
-  } else if (currentTop == 100 && currentLeft == 300){
+  } else if (currentTop == 120 && currentLeft == 320){
     cell = 9;
-  } else if ((currentTop == 100 && currentLeft == 400) || (currentTop == 100 && currentLeft == 410)){
+  } else if ((currentTop == 120 && currentLeft == 420) || (currentTop == 120 && currentLeft == 430)){
     cell = 10;
-  } else if ((currentTop == 200 && currentLeft == 0) || (currentTop == 200 && currentLeft == -10)){
+  } else if ((currentTop == 220 && currentLeft == 20) || (currentTop == 220 && currentLeft == 10)){
     cell = 11;
-  } else if (currentTop == 200 && currentLeft == 100){
+  } else if (currentTop == 220 && currentLeft == 120){
     cell = 12;
-  } else if (currentTop == 200 && currentLeft == 200){
+  } else if (currentTop == 220 && currentLeft == 220){
     cell = 13;
-  } else if (currentTop == 200 && currentLeft == 300){
+  } else if (currentTop == 220 && currentLeft == 320){
     cell = 14;
-  } else if ((currentTop == 200 && currentLeft == 400) || (currentTop == 200 && currentLeft == 410)){
+  } else if ((currentTop == 220 && currentLeft == 420) || (currentTop == 220 && currentLeft == 430)){
     cell = 15;
-  } else if ((currentTop == 300 && currentLeft == 0) || (currentTop == 300 && currentLeft == -10)){
+  } else if ((currentTop == 320 && currentLeft == 20) || (currentTop == 320 && currentLeft == 10)){
     cell = 16;
-  } else if (currentTop == 300 && currentLeft == 100){
+  } else if (currentTop == 320 && currentLeft == 120){
     cell = 17;
-  } else if (currentTop == 300 && currentLeft == 200){
+  } else if (currentTop == 320 && currentLeft == 220){
     cell = 18;
-  } else if (currentTop == 300 && currentLeft == 300){
+  } else if (currentTop == 320 && currentLeft == 320){
     cell = 19;
-  } else if ((currentTop == 300 && currentLeft == 400) || (currentTop == 300 && currentLeft == 410)){
+  } else if ((currentTop == 320 && currentLeft == 420) || (currentTop == 320 && currentLeft == 430)){
     cell = 20;
-  } else if ((currentTop == 400 && currentLeft == 0) || (currentTop == 400 && currentLeft == -10) || (currentTop == 410 && currentLeft == 0) || (currentTop == 410 && currentLeft == -10)){
+  } else if ((currentTop == 420 && currentLeft == 20) || (currentTop == 420 && currentLeft == 10) || (currentTop == 430 && currentLeft == 20) || (currentTop == 430 && currentLeft == 10)){
     cell = 21;
-  } else if (currentTop == 400 && currentLeft == 100){
+  } else if (currentTop == 420 && currentLeft == 120){
     cell = 22;
-  } else if (currentTop == 400 && currentLeft == 200){
+  } else if (currentTop == 420 && currentLeft == 220){
     cell = 23;
-  } else if (currentTop == 400 && currentLeft == 300){
+  } else if (currentTop == 420 && currentLeft == 320){
     cell = 24;
-  } else if ((currentTop == 400 && currentLeft == 400)|| (currentTop == 400 && currentLeft == 410) || (currentTop == 410 && currentLeft == 400) || (currentTop == 410 && currentLeft == 410)){
+  } else if ((currentTop == 420 && currentLeft == 420)|| (currentTop == 420 && currentLeft == 430) || (currentTop == 430 && currentLeft == 420) || (currentTop == 430 && currentLeft == 430)){
     cell = 25;
   } else {
     console.log(currentTop);
@@ -357,33 +357,30 @@ function randomTile(min, max) {
 
 
 function spawnOne() {
-  section = document.createElement("img");
-  section.setAttribute("src", "images/avatars/enemy.png");
+  section = document.createElement("div");
   section.setAttribute("id", "enemy1");
   document.getElementById("container").appendChild(section);
   section.style.position = 'absolute';
-  section.style.left = ((randomTile(-100,400)-8) + "px"); // units ('px')  are unnecessary for 0 but added for clarification
-  section.style.top = ((randomTile(-100,400)-8) + "px");
+  section.style.left = (((randomTile(-100,400)) -8) + "px"); // units ('px')  are unnecessary for 0 but added for clarification
+  section.style.top = (((randomTile(-100,400)) -8) + "px");
 }
 
 function spawnTwo() {
-  section = document.createElement("img");
-  section.setAttribute("src", "images/avatars/enemy.png");
+  section = document.createElement("div");
   section.setAttribute("id", "enemy2");
   document.getElementById("container").appendChild(section);
   section.style.position = 'absolute';
-  section.style.left = ((randomTile(-100,400)-8) + "px"); // units ('px')  are unnecessary for 0 but added for clarification
-  section.style.top = ((randomTile(-100,400)-8) + "px");
+  section.style.left = (((randomTile(-100,400)) -8) + "px");
+  section.style.top = (((randomTile(-100,400)) -8) + "px");
 }
 
 function spawnThree() {
-  section = document.createElement("img");
-  section.setAttribute("src", "images/avatars/enemy.png");
+  section = document.createElement("div");
   section.setAttribute("id", "enemy3");
   document.getElementById("container").appendChild(section);
   section.style.position = 'absolute';
-  section.style.left = ((randomTile(-100,400)-8) + "px"); // units ('px')  are unnecessary for 0 but added for clarification
-  section.style.top = ((randomTile(-100,400)-8) + "px");
+  section.style.left = (((randomTile(-100,400)) -8) + "px");
+  section.style.top = (((randomTile(-100,400)) -8) + "px");
 }
 
 function deSpawnOne() {
@@ -497,7 +494,7 @@ function gameOver() {
 
 
 function resetGame(e) {
-  if(e.keyCode == 16) {
+   if(e.keyCode == 16) {
     console.log("shift");
     var reset = document.getElementById("gameover");
     gameover.parentNode.removeChild(reset);
@@ -513,6 +510,6 @@ function resetGame(e) {
 
 document.getElementById("timer").innerHTML='60';
 
-
+//*********Event Listeners**************//
 
 window.addEventListener('keydown', resetGame);
