@@ -323,6 +323,8 @@ function killEnemy(e) {
       console.log("hit");
       var enemyHit = document.getElementById("enemy");
       enemyHit.parentNode.removeChild(enemyHit);
+      hitFlash();
+      window.addEventListener('keyup', flashOff);
     } else {
       console.log("nothit");
     }
@@ -330,3 +332,16 @@ function killEnemy(e) {
   }
 
 window.addEventListener('keydown', killEnemy);
+
+
+//*******screen flash******//
+
+function hitFlash() {
+ document.getElementById('hero').id = 'heroattack';
+
+}
+ function flashOff(e) {
+
+ document.getElementById('heroattack').id = 'hero';
+
+}

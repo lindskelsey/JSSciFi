@@ -19,6 +19,16 @@
   width: 60px;
   padding: 20px;
   position: absolute;
+
+}
+
+#heroattack {
+  z-index: 10;
+  height: 60px;
+  width: 60px;
+  padding: 20px;
+  position: absolute;
+  background-image: url("../images/avatars/hit.png");
 }
 
 .start {
@@ -33,6 +43,7 @@
   padding: 20px;
   position: absolute;
 }
+
 
 
 //********Animation to translate to the right********//
