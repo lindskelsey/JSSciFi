@@ -1,9 +1,6 @@
 //******************************************************//
-//***************Build Randomly Generated Map***********//
+//***********************Utilities**********************//
 //******************************************************//
-var tilesetTotal = 3;
-var tilesTotal = 2;
-var tilesetNumber = randomNumber(1, tilesetTotal);
 
 //*************Random Number Generator*************//
 
@@ -11,7 +8,44 @@ function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-//***********Function to Randomize Array*******//
+//**************Dynamically create CSS classes*****//
+
+function createClass(name, properties) {
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    document.getElementsByTagName('head')[0].appendChild(style);
+    if (!(style.sheet || {}).insertRule)
+        (style.styleSheet || style.sheet).addRule(name, properties);
+    else
+        style.sheet.insertRule(name + "{" + properties + "}", 0);
+}
+
+//**********Throttle Intervals********//
+
+function throttle(func, limit) {
+    var inThrottle,
+        lastFunc,
+        lastRan;
+    return function() {
+        var context = this,
+            args = arguments;
+        if (!inThrottle) {
+            func.apply(context, args);
+            lastRan = Date.now()
+            inThrottle = true;
+        } else {
+            clearTimeout(lastFunc)
+            lastFunc = setTimeout(function() {
+                if ((Date.now() - lastRan) >= limit) {
+                    func.apply(context, args)
+                    lastRan = Date.now()
+                }
+            }, limit - (Date.now() - lastRan))
+        }
+    };
+}
+
+//**********Random Array********//
 
 function createRandomArray(width, height) {
     var result = [];
@@ -24,24 +58,48 @@ function createRandomArray(width, height) {
     return result;
 }
 
-//*********Variable for map size*******//
+//******************************************************//
+//*************On Load & Event Listeners*****************//
+//******************************************************//
 
-var generatedArray = createRandomArray(5, 5)
-
-//**************Function to dynamically create CSS classes*****//
-
-function createClass(name, properties) {
-    var style = document.createElement('style');
-    style.type = 'text/css';
-    document.getElementsByTagName('head')[0].appendChild(style);
-    if (!(style.sheet || {}).insertRule)
-        (style.styleSheet || style.sheet).addRule(name, properties);
-    else
-        style.sheet.insertRule(name + "{" + properties + "}", 0);
+window.onload = function() {
+    createTileClasses();
+    drawMap();
+    startChar();
 }
 
 
-//****************Function************//
+window.addEventListener('keydown', resetGame);
+window.addEventListener('keydown', throttle(moveCharNew, 200));
+window.addEventListener('keydown', killEnemy);
+window.addEventListener('keyup', flashOff);
+window.addEventListener('keydown', firstSpawn);
+
+//******************************************************//
+//********************Config****************************//
+//******************************************************//
+
+var tilesetTotal = 3;
+var tilesTotal = 2;
+var tilesetNumber = randomNumber(1, tilesetTotal);
+var generatedArray = createRandomArray(5, 5)
+var hitCount = 1;
+var enemyStart = 1
+var count = 1;
+document.getElementById("timer").innerHTML = '60';
+var milisec = 0
+var seconds = 60
+var heroLeft = 0;
+var heroTop = 0;
+
+
+
+//******************************************************//
+//***************Build Randomly Generated Map***********//
+//******************************************************//
+
+
+//*************Assign Each Tile Unique Class************//
 
 function createTileClasses() {
     for (i = 1; i <= tilesTotal; i++) {
@@ -55,7 +113,7 @@ function createTileClasses() {
 }
 
 
-//******************Draw Map & Char Start Point************//
+//****************Draw Map***********//
 
 function drawMap() {
 
@@ -76,39 +134,28 @@ function drawMap() {
 }
 
 
-//**********create map on load*********//
-
-
-window.onload = function() {
-    createTileClasses();
-    drawMap();
-    startChar();
-}
-
-
 //******************************************************//
 //***************Move Character************************//
 //******************************************************//
 
-//**Key Codes W 87 A 65 S 83 D 68******//
+//Key Codes
+//W 87
+//A 65
+//S 83
+//D 68
+//R 82
+//Shift 32
 
 
 
-//***********START CHAR AT TOP=0 LEFT=0************//
+//***********Start Character in Cell 1************//
 
 function startChar() {
     document.getElementById("hero").className = "start";
 }
 
+//************Hero Arrow Movements*********//
 
-window.addEventListener('keydown', throttle(moveCharNew, 200));
-
-
-
-/////*******More Animations***********///
-
-var heroLeft = 0;
-var heroTop = 0;
 
 function moveCharNew(e) {
     //****D/RIGHT**//
@@ -167,35 +214,11 @@ function moveCharNew(e) {
 }
 
 
+//******************************************************//
+//***************Move Character*************************//
+//******************************************************//
 
-//**********Throttle Function********//
-
-function throttle(func, limit) {
-    var inThrottle,
-        lastFunc,
-        lastRan;
-    return function() {
-        var context = this,
-            args = arguments;
-        if (!inThrottle) {
-            func.apply(context, args);
-            lastRan = Date.now()
-            inThrottle = true;
-        } else {
-            clearTimeout(lastFunc)
-            lastFunc = setTimeout(function() {
-                if ((Date.now() - lastRan) >= limit) {
-                    func.apply(context, args)
-                    lastRan = Date.now()
-                }
-            }, limit - (Date.now() - lastRan))
-        }
-    };
-}
-
-
-
-//*************Collision Detection**********//
+//**********Get Top/Left Values*************//
 
 function getOffsetLeft(elem) {
     var offsetLeft = 0;
@@ -218,8 +241,7 @@ function getOffsetTop(elem) {
 }
 
 
-
-//**********FIND CELL*************//
+//**********Find Cell Based on Top/Left Values*************//
 
 function getCoordinates(elem) {
     var cell;
@@ -283,11 +305,11 @@ function getCoordinates(elem) {
     return cell;
 }
 
+//******************************************************//
+//********************Attack Enemy**********************//
+//******************************************************//
 
-
-var hitCount = 1;
-
-
+//*******************Kill Enemy********************//
 
 function killEnemy(e) {
     if (e.keyCode == 75) {
@@ -333,11 +355,8 @@ function killEnemy(e) {
     }
 }
 
-window.addEventListener('keydown', killEnemy);
-window.addEventListener('keyup', flashOff);
 
-
-//*******screen flash******//
+//********************Attack Animation**********************//
 
 function hitFlash() {
     document.getElementById('hero').id = 'heroattack';
@@ -352,16 +371,18 @@ function flashOff(e) {
 }
 
 
-//***SPawn**//
+//******************************************************//
+//********************Spawn Enemies**********************//
+//******************************************************//
 
-//**************Create Enemy******//
+//*********Randomize Spawn Tile*****************//
 
 function randomTile(min, max) {
     randomNum = Math.floor(Math.random() * (max - min + 1) + min);
     return 100 * Math.ceil(randomNum / 100);
 }
 
-
+//*********Spawn Enemies With Unique IDs*****************//
 
 function spawnOne() {
     section = document.createElement("div");
@@ -390,6 +411,8 @@ function spawnThree() {
     section.style.top = (((randomTile(-100, 400)) - 8) + "px");
 }
 
+//*********DeSpawn Enemies Based on IDs*****************//
+
 function deSpawnOne() {
     var enemyDeSpawn = document.getElementById("enemy1");
     enemy1.parentNode.removeChild(enemyDeSpawn);
@@ -405,7 +428,7 @@ function deSpawnThree() {
     enemy3.parentNode.removeChild(enemyDeSpawn);
 }
 
-var enemyStart = 1
+//*********Spawn and DeSpawn Timer***************//
 
 function createEnemy() {
     if (document.getElementById('enemy1') == null) {
@@ -425,7 +448,7 @@ function createEnemy() {
     }
 }
 
-var count = 1;
+//*********Begin Spawn Action****************//
 
 function startSpawn() {
     createEnemy();
@@ -442,6 +465,8 @@ function startSpawn() {
     }, 1300);
 }
 
+//*********Fist Spawn on Shift Keydown*************//
+
 
 function firstSpawn(e) {
     if (e.keyCode == 32) {
@@ -451,12 +476,11 @@ function firstSpawn(e) {
 
 
 
+//******************************************************//
+//***************************UI*************************//
+//******************************************************//
 
-window.addEventListener('keydown', firstSpawn);
-
-
-//******score********//
-
+//*********Scoreboard*******//
 
 var score = 0;
 var scoreBoard = document.getElementById('score');
@@ -466,11 +490,10 @@ function scorePlus() {
     scoreBoard.innerHTML = score;
 }
 
-//*********timer*******//
+//*********Timer*******//
 
 var milisec = 0
 var seconds = 60
-
 
 
 function display() {
@@ -486,6 +509,10 @@ function display() {
     document.getElementById("timer").innerHTML = seconds + "." + milisec
     setTimeout("display()", 100)
 }
+
+//******************************************************//
+//***************Game States*************************//
+//******************************************************//
 
 //******Game Over*******//
 
@@ -513,9 +540,3 @@ function resetGame(e) {
         startSpawn();
     }
 }
-
-document.getElementById("timer").innerHTML = '60';
-
-//*********Event Listeners**************//
-
-window.addEventListener('keydown', resetGame);
