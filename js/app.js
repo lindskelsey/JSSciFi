@@ -90,10 +90,9 @@ var heroTop = 0;//**Hero starting location
 var score = 0; //**Scoreboard starting value
 var scoreBoard = document.getElementById('score'); //**Grab scoreboard
 
-var milisec = 0; //**Base value for timer DO NOT CHANGE
-var seconds = 60; //**Base value for timer DO NOT CHANGE
+
 var hitCount = 1; //**Base value for attack animation DO NOT CHANGE
-var count = 1; //**Base value for spawn loop DO NOT CHANGE
+
 
 
 //******************************************************//
@@ -452,6 +451,7 @@ function createEnemy() {
 
 
 function startSpawn() {
+  count = 0;
     createEnemy();
     startTimer = setInterval(function() {
         createEnemy();
