@@ -85,7 +85,6 @@ var tilesetNumber = randomNumber(1, tilesetTotal); //**Choose random tileset
 var row = 5 //**Number of rows
 var column = 5 //**Number of columns
 var generatedArray = createRandomArray(row, column) //**Randomized array based on rows/columns
-document.getElementById("timer").innerHTML = '60'; //**Timer starting value
 var heroLeft = 0; //**Hero starting location
 var heroTop = 0;//**Hero starting location
 var score = 0; //**Scoreboard starting value
@@ -450,14 +449,15 @@ function createEnemy() {
 
 //*********Begin Spawn Action****************//
 
+
+
 function startSpawn() {
     createEnemy();
-    display();
     startTimer = setInterval(function() {
         createEnemy();
         count++;
         console.log(count);
-        if (count == 44) {
+        if (count == 47) {
             clearInterval(startTimer);
             gameOver();
             console.log("game over");
@@ -465,12 +465,15 @@ function startSpawn() {
     }, 1300);
 }
 
+
+
 //*********Fist Spawn on Shift Keydown*************//
 
 
 function firstSpawn(e) {
     if (e.keyCode == 32) {
         startSpawn();
+        countdown(1);
     }
 }
 
@@ -501,7 +504,7 @@ function display() {
     } else
         milisec -= 1
     document.getElementById("timer").innerHTML = seconds + "." + milisec
-    setTimeout("display()", 100)
+    setTimeout("display()", 100);
 }
 
 //******************************************************//
@@ -525,12 +528,36 @@ function resetGame(e) {
         console.log("RESTART");
         var reset = document.getElementById("gameover");
         gameover.parentNode.removeChild(reset);
-        count = 1;
-        score = 0;
-        seconds = 60;
-        milisec = 0;
         document.getElementById("score").innerHTML = '0';
-        document.getElementById("timer").innerHTML = '60';
         startSpawn();
+        countdown(1);
     }
+}
+
+//***
+
+var timeoutHandle;
+
+function countdown(minutes) {
+    var seconds = 60;
+    var mins = minutes
+    function tick() {
+        var counter = document.getElementById("timer2");
+        var current_minutes = mins-1
+        seconds--;
+        counter.innerHTML =
+        current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+        if( seconds > 0 ) {
+            timeoutHandle=setTimeout(tick, 1000);
+        } else {
+
+            if(mins > 1){
+
+               // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst
+               setTimeout(function () { countdown(mins - 1); }, 1000);
+
+            }
+        }
+    }
+    tick();
 }
