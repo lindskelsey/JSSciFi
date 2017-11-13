@@ -492,7 +492,7 @@ function display() {
 function gameOver() {
     var gameOver = document.createElement("div");
     gameOver.setAttribute("id", "gameover");
-    gameOver.innerHTML = '<p>Game Over</p><p>Score: ' + score + '</p><p>Press Shift to play again</p>';
+    gameOver.innerHTML = '<p>Game Over</p><p>Score: ' + score + '</p><p>Press "R" to retry!</p>';
     document.getElementById("main").appendChild(gameOver);
 }
 
@@ -500,8 +500,8 @@ function gameOver() {
 
 
 function resetGame(e) {
-    if (e.keyCode == 16) {
-        console.log("shift");
+    if (e.keyCode == 82) {
+        console.log("RESTART");
         var reset = document.getElementById("gameover");
         gameover.parentNode.removeChild(reset);
         count = 1;
