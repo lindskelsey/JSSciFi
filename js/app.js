@@ -493,19 +493,30 @@ function scorePlus() {
 //*********Timer*******//
 
 
-function display() {
-    if (milisec <= 0) {
-        milisec = 9
-        seconds -= 1
+var timeoutHandle;
+
+function countdown(minutes) {
+    var seconds = 60;
+    var mins = minutes
+    function tick() {
+        var counter = document.getElementById("timer2");
+        var current_minutes = mins-1
+        seconds--;
+        counter.innerHTML =
+        current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+        if( seconds > 0 ) {
+            timeoutHandle=setTimeout(tick, 1000);
+        } else {
+
+            if(mins > 1){
+               setTimeout(function () { countdown(mins - 1); }, 1000);
+
+            }
+        }
     }
-    if (seconds <= -1) {
-        milisec = 0
-        seconds += 1
-    } else
-        milisec -= 1
-    document.getElementById("timer").innerHTML = seconds + "." + milisec
-    setTimeout("display()", 100);
+    tick();
 }
+
 
 //******************************************************//
 //***************Game States*************************//
@@ -525,6 +536,7 @@ function gameOver() {
 
 function resetGame(e) {
     if (e.keyCode == 82) {
+        score = 0;
         console.log("RESTART");
         var reset = document.getElementById("gameover");
         gameover.parentNode.removeChild(reset);
@@ -532,32 +544,4 @@ function resetGame(e) {
         startSpawn();
         countdown(1);
     }
-}
-
-//***
-
-var timeoutHandle;
-
-function countdown(minutes) {
-    var seconds = 60;
-    var mins = minutes
-    function tick() {
-        var counter = document.getElementById("timer2");
-        var current_minutes = mins-1
-        seconds--;
-        counter.innerHTML =
-        current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
-        if( seconds > 0 ) {
-            timeoutHandle=setTimeout(tick, 1000);
-        } else {
-
-            if(mins > 1){
-
-               // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst
-               setTimeout(function () { countdown(mins - 1); }, 1000);
-
-            }
-        }
-    }
-    tick();
 }
