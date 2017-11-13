@@ -40,37 +40,48 @@
 
 
 .scoreboard {
-  border: 2px solid black;
+  border: 2px solid red;
   width: 200px;
   height: 100px;
   text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  margin: 25px;
+  background-color: #222;
+  color: #eee;
+
 }
 
 .timer {
-  border: 2px solid black;
+  border: 2px solid red;
   width: 200px;
   height: 100px;
   text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  margin: 25px;
+  background-color: #222;
+  color: #eee;
+
 
 }
 
 .info{
-    width: 400px;
-    background-color:#eee;
+    width: 500px;
     display:flex;
 }
 
 #gameover {
   width: 300px;
-  height: 200px;
+  height: 150px;
   z-index: 12;
   position: absolute;
   top: 100px;
   left: 100px;
-  background-color: #eee;
+  background-color: #222;
   border: 2px solid red;
   text-align: center;
   font-size: 20px;
+  font-family: 'Orbitron', sans-serif;
+  color: #eee;
 }
 
 #instructions {
@@ -80,10 +91,13 @@
   position: absolute;
   top: 50px;
   left: 550px;
-  background-color: #eee;
+  background-color: #222;
   border: 2px solid red;
   text-align: left;
-  font-size: 20px;
+  font-size: 18px;
+  font-family: 'Orbitron', sans-serif;
+  color: #eee;
+  padding-left: 10px;
 }
 
 
@@ -191,7 +205,7 @@
 }
 
 body {
-  background-image: url("../images/ui/2.png");
+  background-image: url("../images/ui/worldbg.png");
 }
 
 
