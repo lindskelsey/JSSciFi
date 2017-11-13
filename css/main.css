@@ -123,6 +123,8 @@
     margin: 25px;
     position: absolute;
 
+     box-shadow: 4px 13px 10px -10px black;
+
   }
 
   #hero {
@@ -155,6 +157,7 @@
   animation-duration: 0.8s;
   animation-iteration-count: infinite;
   animation-timing-function: steps(2);
+  box-shadow: 1px 13px 10px -10px black;
 }
 
 #enemy2 {
@@ -169,6 +172,7 @@
   animation-duration: 0.8s;
   animation-iteration-count: infinite;
   animation-timing-function: steps(2);
+  box-shadow: 1px 13px 10px -10px black;
 }
 
 #enemy3 {
@@ -183,4 +187,5 @@
   animation-duration: 0.8s;
   animation-iteration-count: infinite;
   animation-timing-function: steps(2);
+  box-shadow: 1px 13px 10px -10px black;
 }
