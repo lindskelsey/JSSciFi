@@ -79,19 +79,22 @@ window.addEventListener('keydown', firstSpawn);
 //********************Config****************************//
 //******************************************************//
 
-var tilesetTotal = 3;
-var tilesTotal = 2;
-var tilesetNumber = randomNumber(1, tilesetTotal);
-var generatedArray = createRandomArray(5, 5)
-var hitCount = 1;
-var enemyStart = 1
-var count = 1;
-document.getElementById("timer").innerHTML = '60';
-var milisec = 0
-var seconds = 60
-var heroLeft = 0;
-var heroTop = 0;
+var tilesetTotal = 3; //**Total number of tilesets in tiles folder
+var tilesTotal = 2; //**Total number of tiles per tileset
+var tilesetNumber = randomNumber(1, tilesetTotal); //**Choose random tileset
+var row = 5 //**Number of rows
+var column = 5 //**Number of columns
+var generatedArray = createRandomArray(row, column) //**Randomized array based on rows/columns
+document.getElementById("timer").innerHTML = '60'; //**Timer starting value
+var heroLeft = 0; //**Hero starting location
+var heroTop = 0;//**Hero starting location
+var score = 0; //**Scoreboard starting value
+var scoreBoard = document.getElementById('score'); //**Grab scoreboard
 
+var milisec = 0; //**Base value for timer DO NOT CHANGE
+var seconds = 60; //**Base value for timer DO NOT CHANGE
+var hitCount = 1; //**Base value for attack animation DO NOT CHANGE
+var count = 1; //**Base value for spawn loop DO NOT CHANGE
 
 
 //******************************************************//
@@ -116,9 +119,6 @@ function createTileClasses() {
 //****************Draw Map***********//
 
 function drawMap() {
-
-
-
     var container = document.getElementById("container");
     for (var i = 0; i < generatedArray.length; i++) {
         for (var j = 0; j < generatedArray[i].length; j++) {
@@ -482,18 +482,12 @@ function firstSpawn(e) {
 
 //*********Scoreboard*******//
 
-var score = 0;
-var scoreBoard = document.getElementById('score');
-
 function scorePlus() {
     score++;
     scoreBoard.innerHTML = score;
 }
 
 //*********Timer*******//
-
-var milisec = 0
-var seconds = 60
 
 
 function display() {
