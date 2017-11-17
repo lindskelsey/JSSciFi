@@ -70,9 +70,9 @@ window.onload = function() {
 
 
 window.addEventListener('keydown', resetGame);
-window.addEventListener('keydown', throttle(moveCharNew, 200));
-window.addEventListener('keydown', killEnemy);
-window.addEventListener('keyup', flashOff);
+window.addEventListener('keydown', throttle(moveCharNew, 100));
+window.addEventListener('keydown', throttle(killEnemy,100));
+window.addEventListener('keyup', throttle(flashOff,100));
 window.addEventListener('keydown', firstSpawn);
 
 //******************************************************//
@@ -82,11 +82,10 @@ window.addEventListener('keydown', firstSpawn);
 var tilesetTotal = 3; //**Total number of tilesets in tiles folder
 var tilesTotal = 2; //**Total number of tiles per tileset
 var tilesetNumber = randomNumber(1, tilesetTotal); //**Choose random tileset
-var row = 5 //**Number of rows
+var row = 7 //**Number of rows
 var column = 5 //**Number of columns
 var generatedArray = createRandomArray(row, column) //**Randomized array based on rows/columns
-var heroLeft = 0; //**Hero starting location
-var heroTop = 0;//**Hero starting location
+
 var score = 0; //**Scoreboard starting value
 var scoreBoard = document.getElementById('score'); //**Grab scoreboard
 
@@ -107,9 +106,7 @@ function createTileClasses() {
         var divClass = (".tile" + i);
         var newProperty = ("background-image: url(\"images/tiles/" + tilesetNumber + "/tile" + i + ".png\");")
         createClass(divClass, newProperty);
-        console.log(i);
-        console.log(divClass);
-        console.log(newProperty);
+
     }
 }
 
@@ -122,10 +119,10 @@ function drawMap() {
         for (var j = 0; j < generatedArray[i].length; j++) {
             if (parseInt(generatedArray[i][j]) == 1) {
                 container.innerHTML += '<div class="tile tile1"></div>';
-                console.log("tile1");
+
             } else if (parseInt(generatedArray[i][j]) == 2) {
                 container.innerHTML += '<div class="tile tile2"></div>';
-                console.log("tile2");
+
             }
         }
     }
@@ -154,15 +151,19 @@ function startChar() {
 
 //************Hero Arrow Movements*********//
 
+var container = document.getElementById("container");
+
+var containerTop = getOffsetTop(container) -250;
+var containerLeft = getOffsetLeft(container) -350;
 
 function moveCharNew(e) {
     //****D/RIGHT**//
     if (e.keyCode == 68) {
         timer = setInterval(function() {
             hero.style.left = (heroLeft += 10) + "px";
-            if (heroLeft == 100 || heroLeft == 200 || heroLeft == 300 || heroLeft == 400) {
+            if (heroLeft == containerLeft + 100 || heroLeft == containerLeft + 200 || heroLeft ==  containerLeft + 300 || heroLeft == containerLeft + 400 || heroLeft == containerLeft + 500 || heroLeft == containerLeft + 600) {
                 clearInterval(timer);
-            } else if (heroLeft == 410) {
+            } else if (heroLeft == containerLeft + 610) {
                 heroLeft -= 10;
                 clearInterval(timer);
             }
@@ -173,9 +174,9 @@ function moveCharNew(e) {
     if (e.keyCode == 65) {
         timer = setInterval(function() {
             hero.style.left = (heroLeft -= 10) + "px";
-            if (heroLeft == 0 || heroLeft == 100 || heroLeft == 200 || heroLeft == 300) {
+            if (heroLeft == containerLeft + 0 || heroLeft == containerLeft + 100 || heroLeft == containerLeft + 200 || heroLeft == containerLeft + 300 || heroLeft == containerLeft + 400 || heroLeft == containerLeft + 500) {
                 clearInterval(timer);
-            } else if (heroLeft == -10) {
+            } else if (heroLeft == containerLeft -10) {
                 heroLeft += 10;
                 clearInterval(timer);
             }
@@ -186,9 +187,9 @@ function moveCharNew(e) {
     if (e.keyCode == 87) {
         timer = setInterval(function() {
             hero.style.top = (heroTop -= 10) + "px";
-            if (heroTop == 0 || heroTop == 100 || heroTop == 200 || heroTop == 300) {
+            if (heroTop == containerTop + 0 || heroTop == containerTop + 100 || heroTop == containerTop + 200 || heroTop == containerTop + 300) {
                 clearInterval(timer);
-            } else if (heroTop == -10) {
+            } else if (heroTop == containerTop - 10) {
                 heroTop += 10;
                 clearInterval(timer);
 
@@ -200,9 +201,9 @@ function moveCharNew(e) {
     if (e.keyCode == 83) {
         timer = setInterval(function() {
             hero.style.top = (heroTop += 10) + "px";
-            if (heroTop == 100 || heroTop == 200 || heroTop == 300 || heroTop == 400) {
+            if (heroTop == containerTop + 100 || heroTop == containerTop + 200 || heroTop == containerTop + 300 || heroTop == containerTop + 400) {
                 clearInterval(timer);
-            } else if (heroTop == 410) {
+            } else if (heroTop == containerTop + 410) {
                 heroTop -= 10;
                 clearInterval(timer);
             }
@@ -241,73 +242,93 @@ function getOffsetTop(elem) {
 
 //**********Find Cell Based on Top/Left Values*************//
 
-function getCoordinates(elem) {
-    var cell;
-    var currentTop = getOffsetTop(elem);
-    var currentLeft = getOffsetLeft(elem);
 
-    if ((currentTop == 25 && currentLeft == 25) || (currentTop == 15 && currentLeft == 25) || (currentTop == 25 && currentLeft == 15) || (currentTop == 15 && currentLeft == 15)) {
-        cell = 1;
-    } else if ((currentTop == 25 && currentLeft == 125) || (currentTop == 15 && currentLeft == 125)) {
-        cell = 2;
-    } else if ((currentTop == 25 && currentLeft == 225) || (currentTop == 15 && currentLeft == 225)) {
-        cell = 3;
-    } else if ((currentTop == 25 && currentLeft == 325) || (currentTop == 15 && currentLeft == 325)) {
-        cell = 4;
-    } else if ((currentTop == 25 && currentLeft == 425) || (currentTop == 15 && currentLeft == 425) || (currentTop == 5 && currentLeft == -415) || (currentTop == -15 && currentLeft == 415)) {
-        cell = 5;
-    } else if ((currentTop == 125 && currentLeft == 25) || (currentTop == 125 && currentLeft == 15)) {
-        cell = 6;
-    } else if (currentTop == 125 && currentLeft == 125) {
-        cell = 7;
-    } else if (currentTop == 125 && currentLeft == 225) {
-        cell = 8;
-    } else if (currentTop == 125 && currentLeft == 325) {
-        cell = 9;
-    } else if ((currentTop == 125 && currentLeft == 425) || (currentTop == 125 && currentLeft == 435)) {
-        cell = 10;
-    } else if ((currentTop == 225 && currentLeft == 25) || (currentTop == 225 && currentLeft == 15)) {
-        cell = 11;
-    } else if (currentTop == 225 && currentLeft == 125) {
-        cell = 12;
-    } else if (currentTop == 225 && currentLeft == 225) {
-        cell = 13;
-    } else if (currentTop == 225 && currentLeft == 325) {
-        cell = 14;
-    } else if ((currentTop == 225 && currentLeft == 425) || (currentTop == 225 && currentLeft == 435)) {
-        cell = 15;
-    } else if ((currentTop == 325 && currentLeft == 25) || (currentTop == 325 && currentLeft == 15)) {
-        cell = 16;
-    } else if (currentTop == 325 && currentLeft == 125) {
-        cell = 17;
-    } else if (currentTop == 325 && currentLeft == 225) {
-        cell = 18;
-    } else if (currentTop == 325 && currentLeft == 325) {
-        cell = 19;
-    } else if ((currentTop == 325 && currentLeft == 425) || (currentTop == 325 && currentLeft == 435)) {
-        cell = 20;
-    } else if ((currentTop == 425 && currentLeft == 25) || (currentTop == 425 && currentLeft == 15) || (currentTop == 435 && currentLeft == 25) || (currentTop == 435 && currentLeft == 15)) {
-        cell = 21;
-    } else if (currentTop == 425 && currentLeft == 125) {
-        cell = 22;
-    } else if (currentTop == 425 && currentLeft == 225) {
-        cell = 23;
-    } else if (currentTop == 425 && currentLeft == 325) {
-        cell = 24;
-    } else if ((currentTop == 425 && currentLeft == 425) || (currentTop == 425 && currentLeft == 435) || (currentTop == 435 && currentLeft == 425) || (currentTop == 435 && currentLeft == 435)) {
-        cell = 25;
-    } else {
-        console.log(currentTop);
-        console.log(currentLeft);
-    }
-    return cell;
+
+
+
+function Cell(top, left, id) {
+  this.cellTop = containerTop + top;
+  this.cellLeft = containerLeft + left;
+  this.cellId = id;
 }
+
+var cellArray = [];
+/* row one */
+cellArray[0] = new Cell(0, 0, 1);
+cellArray[1] = new Cell(0, 100, 2);
+cellArray[2] = new Cell(0, 200, 3);
+cellArray[3] = new Cell(0, 300, 4);
+cellArray[4] = new Cell(0, 400, 5);
+cellArray[5] = new Cell(0, 600, 6);
+cellArray[6] = new Cell(0, 700, 7);
+/* row two */
+cellArray[7] = new Cell(100, 0, 8);
+cellArray[8] = new Cell(100, 100, 9);
+cellArray[9] = new Cell(100, 200, 10);
+cellArray[10] = new Cell(100, 300, 11);
+cellArray[11] = new Cell(100, 400, 12);
+cellArray[12] = new Cell(100, 600, 13);
+cellArray[13] = new Cell(100, 700, 14);
+/* row three */
+cellArray[14] = new Cell(200, 0, 15);
+cellArray[15] = new Cell(200, 100, 16);
+cellArray[16] = new Cell(200, 200, 17);
+cellArray[17] = new Cell(200, 300, 18);
+cellArray[18] = new Cell(200, 400, 19);
+cellArray[19] = new Cell(200, 600, 20);
+cellArray[20] = new Cell(200, 700, 21);
+/* row four */
+cellArray[21] = new Cell(300, 0, 22);
+cellArray[22] = new Cell(300, 100, 23);
+cellArray[23] = new Cell(300, 200, 24);
+cellArray[24] = new Cell(300, 300, 25);
+cellArray[25] = new Cell(300, 400, 26);
+cellArray[26] = new Cell(300, 600, 27);
+cellArray[27] = new Cell(300, 700, 28);
+/* row five */
+cellArray[28] = new Cell(400, 0, 29);
+cellArray[29] = new Cell(400, 100, 30);
+cellArray[30] = new Cell(400, 200, 31);
+cellArray[31] = new Cell(400, 300, 32);
+cellArray[32] = new Cell(400, 400, 33);
+cellArray[33] = new Cell(400, 600, 34);
+cellArray[34] = new Cell(400, 700, 35);
+
+var hero = document.getElementById("hero");
+
+var maxCells = row * column;
+
+function getCoordinates(elem) {
+
+  var cell;
+  var currentTop = getOffsetTop(elem);
+  var currentLeft = getOffsetLeft(elem);
+  var cellTop;
+  var cellLeft;
+
+  for(i = 0; i < maxCells; i++) {
+    cellTop = cellArray[i].cellTop;
+    cellLeft = cellArray[i].cellLeft;
+    cellBottom = cellTop + 100;
+    cellRight = cellLeft + 100;
+
+    if(currentTop >= cellTop && currentTop < cellBottom && currentLeft >= cellLeft && currentLeft < cellRight) {
+      cell = cellArray[i].cellId;
+      console.log(cell);
+    }
+
+    }
+  }
+
 
 //******************************************************//
 //********************Attack Enemy**********************//
 //******************************************************//
 
 //*******************Kill Enemy********************//
+
+var heroLeft = containerLeft; //**Hero starting location
+var heroTop = containerTop;//**Hero starting location
 
 function killEnemy(e) {
     if (e.keyCode == 75) {
@@ -387,8 +408,8 @@ function spawnOne() {
     section.setAttribute("id", "enemy1");
     document.getElementById("container").appendChild(section);
     section.style.position = 'absolute';
-    section.style.left = (((randomTile(-100, 400)) - 8) + "px");
-    section.style.top = (((randomTile(-100, 400)) - 8) + "px");
+    section.style.left = (300) + "px";
+    section.style.top = (200) + "px";
 }
 
 function spawnTwo() {
@@ -396,8 +417,8 @@ function spawnTwo() {
     section.setAttribute("id", "enemy2");
     document.getElementById("container").appendChild(section);
     section.style.position = 'absolute';
-    section.style.left = (((randomTile(-100, 400)) - 8) + "px");
-    section.style.top = (((randomTile(-100, 400)) - 8) + "px");
+    section.style.left = (400) + "px";
+    section.style.top = (400) + "px";
 }
 
 function spawnThree() {
@@ -405,8 +426,8 @@ function spawnThree() {
     section.setAttribute("id", "enemy3");
     document.getElementById("container").appendChild(section);
     section.style.position = 'absolute';
-    section.style.left = (((randomTile(-100, 400)) - 8) + "px");
-    section.style.top = (((randomTile(-100, 400)) - 8) + "px");
+    section.style.left = (500) + "px";
+    section.style.top = (300) + "px";
 }
 
 //*********DeSpawn Enemies Based on IDs*****************//
@@ -433,16 +454,16 @@ function createEnemy() {
         setTimeout(spawnOne, 0)
     }
     if (document.getElementById('enemy2') == null) {
-        setTimeout(spawnTwo, 400)
+        setTimeout(spawnTwo, 500)
     }
     if (document.getElementById('enemy3') == null) {
-        setTimeout(spawnThree, 800)
+        setTimeout(spawnThree, 1000)
     } else if (document.getElementById('enemy1') != null) {
         setTimeout(deSpawnOne, 0)
     } else if (document.getElementById('enemy2') != null) {
-        setTimeout(deSpawnTwo, 400)
+        setTimeout(deSpawnTwo, 500)
     } else if (document.getElementById('enemy1') != null) {
-        setTimeout(deSpawnThree, 800)
+        setTimeout(deSpawnThree, 1000)
     }
 }
 
